@@ -13,7 +13,8 @@
 
 <div id="example">
 	<div id="item-template" class="template">
-		<span class="text1">dummy</span>
+		<span class="root1"></span>
+		<div><span class="nested1"></span></div>
 	</div>
 </div>
 
@@ -21,7 +22,8 @@
 <script src="jquery.clonetemplate.js"></script>
 <script>
 	$("body").append($("#item-template > *").cloneTemplate({
-		text1: "text1"
+		root1: "root text",
+		nested1: "nested text"
 	}));
 </script>
 

@@ -22,6 +22,7 @@
 
 		$.each(map, function (name) {
 			setValue($element.filter("." + name), map[name]);
+			setValue($element.find("." + name), map[name]);
 		});
 
 		return $element;
