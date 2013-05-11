@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>jquery.clonetemplate.js example</title>
+	<style>
+		.template {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+
+<div id="example">
+	<div id="item-template" class="template">
+		<span class="text1">dummy</span>
+	</div>
+</div>
+
+<script src="jquery-1.9.1.min.js"></script>
+<script src="jquery.clonetemplate.js"></script>
+<script>
+	$("body").append($("#item-template > *").cloneTemplate({
+		text1: "text1"
+	}));
+</script>
+
+</body>
+</html>
