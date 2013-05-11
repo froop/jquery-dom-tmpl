@@ -16,13 +16,16 @@
 		var $element = $template.clone();
 
 		function setValue($fields, value) {
-			//TODO
-			$fields.text(value);
+			$fields.filter("input").val(value); //TODO checkbox, radio, select
+			$fields.not("input").text(value);
 		}
 
 		$.each(map, function (name) {
+			//TODO refactoring
 			setValue($element.filter("." + name), map[name]);
 			setValue($element.find("." + name), map[name]);
+			setValue($element.filter("input[name=" + name + "]"), map[name]);
+			setValue($element.find("input[name=" + name + "]"), map[name]);
 		});
 
 		return $element;

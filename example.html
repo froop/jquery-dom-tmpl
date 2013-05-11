@@ -15,6 +15,7 @@
 	<div id="item-template" class="template">
 		<span class="root1"></span>
 		<div><span class="nested1"></span></div>
+		<input name="input1">
 	</div>
 </div>
 
@@ -23,7 +24,8 @@
 <script>
 	$("body").append($("#item-template > *").cloneTemplate({
 		root1: "root text",
-		nested1: "nested text"
+		nested1: "nested text",
+		input1: "input text"
 	}));
 </script>
 
