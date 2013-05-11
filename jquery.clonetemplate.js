@@ -9,16 +9,19 @@
 	"use strict";
 
 	/**
-	 * @param {Object} map className: value
+	 * @param {Object} map className / input[name]: value
 	 */
 	$.fn.cloneTemplate = function (map) {
 		var $template = this;
 		var $element = $template.clone();
 
-		$.each(map, function (className) {
-			var $field = $element.filter("." + className);
+		function setValue($fields, value) {
 			//TODO
-			$field.text(map[className]);
+			$fields.text(value);
+		}
+
+		$.each(map, function (name) {
+			setValue($element.filter("." + name), map[name]);
 		});
 
 		return $element;
