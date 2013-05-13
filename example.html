@@ -16,6 +16,17 @@
 		<span class="root1"></span>
 		<div><span class="nested1"></span></div>
 		<input name="input1">
+		<input name="input2">
+		<input name="checkbox1" type="checkbox" value="1">
+<!--
+		<input name="radio1" type="radio" value="1">
+		<input name="radio1" type="radio" value="2">
+-->
+		<select name="select1">
+			<option value=""></option>
+			<option value="11">select11</option>
+			<option value="12">select12</option>
+		</select>
 	</div>
 </div>
 
@@ -26,7 +37,11 @@
 	$("body").append($("#item-template > *").cloneTemplate({
 		root1: "root text",
 		nested1: "nested text",
-		input1: "input text"
+		input1: "input text",
+		input2: 123,
+		checkbox1: true,
+//		radio1: "1",
+		select1: "11"
 	}));
 </script>
 
