@@ -16,9 +16,8 @@
 	$.fn.cloneTemplate = function (data) {
 		var $wrapper = this.clone()
 				.wrapAll("<div class='wrapper'>")
-				.closest(".wrapper");
-
-		Transparency.render($wrapper.get(0), data);
+				.closest(".wrapper")
+				.render(data);
 
 		return $wrapper.children();
 	};
@@ -31,7 +30,7 @@
 
 		$element.find("option").addClass("selectItem");
 
-		Transparency.render($element.get(0), data, {
+		$element.render(data, {
 			selectItem: {
 				value: function (params) {
 					return this.value;
