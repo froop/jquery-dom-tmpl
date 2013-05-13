@@ -6,7 +6,7 @@
  * Created by froop http://github.com/froop/jquery-clone-template
  * The MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
-/*global jQuery, Transparency */
+/*global jQuery, Transparency, weld */
 (function ($) {
 	"use strict";
 
@@ -16,9 +16,8 @@
 	$.fn.cloneTemplate = function (data) {
 		var $wrapper = this.clone()
 				.wrapAll("<div class='wrapper'>")
-				.closest(".wrapper")
-				.render(data);
-
+				.closest(".wrapper");
+		weld($wrapper.get(0), data);
 		return $wrapper.children();
 	};
 
