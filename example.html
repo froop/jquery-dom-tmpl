@@ -23,7 +23,7 @@
 		<input name="radio1" type="radio" value="2">
 -->
 		<select name="select1">
-			<option class="select1opt"></option>
+			<option></option>
 		</select>
 	</div>
 </div>
@@ -32,20 +32,11 @@
 <script src="transparency.js"></script>
 <script src="jquery.clonetemplate.js"></script>
 <script>
-	$("select[name=select1]").render([
+	$("select[name=select1]").cloneSelectOptions([
 		{value: "", text: ""},
 		{value: "11", text: "select11"},
 		{value: "12", text: "select12"}
-	], {
-		select1opt: {
-			value: function (params) {
-				return this.value;
-			},
-			text: function (params) {
-				return this.text;
-			}
-		}
-	});
+	]);
 
 	$("body").append($("#item-template > *").cloneTemplate({
 		root1: "root text",

@@ -22,4 +22,26 @@
 
 		return $wrapper.children();
 	};
+
+	/**
+	 * @param {Array} data List of JSON object
+	 */
+	$.fn.cloneSelectOptions = function (data) {
+		var $element = this;
+
+		$element.find("option").addClass("selectItem");
+
+		Transparency.render($element.get(0), data, {
+			selectItem: {
+				value: function (params) {
+					return this.value;
+				},
+				text: function (params) {
+					return this.text;
+				}
+			}
+		});
+
+		return this;
+	};
 })(jQuery);
