@@ -9,3 +9,23 @@ HTML テンプレートを DOM で用意して clone する jQuery プラグイ�
 調べてみたら、同様の思想で作られた下記のテンプレートエンジンを見つけたので、内部でコレを使うことにする。
 
 Transparency: https://github.com/leonidas/transparency
+
+cloneTemplate
+--------------------
+DOM 上のテンプレートを clone して値を設定。
+
+	$("body").append($("#item-template > *").cloneTemplate({
+		input1: "input text",
+		input2: 123,
+		checkbox1: true
+	}));
+
+cloneSelectOptions
+--------------------
+select タグ内の option タグを配列から動的に作成。引数は value, text を持つオブジェクトの配列。
+
+	$("select[name=select1]").cloneSelectOptions([
+		{value: "", text: ""},
+		{value: "1", text: "select1"},
+		{value: "2", text: "select2"}
+	]);
