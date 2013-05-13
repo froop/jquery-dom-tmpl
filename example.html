@@ -15,27 +15,23 @@
 	<div id="item-template" class="template">
 		<span class="root1"></span>
 		<div><span class="nested1"></span></div>
-		<input name="input1">
-		<input name="input2">
-		<input name="checkbox1" type="checkbox" value="1">
-		<input name="radio1" type="radio" value="1">
-		<input name="radio1" type="radio" value="2">
-		<select name="select1">
-			<option></option>
+		<input class="input1">
+		<input class="input2">
+		<input class="checkbox1" type="checkbox" value="1">
+		<input class="radio1" type="radio" value="1">
+		<input class="radio1" type="radio" value="2">
+		<select class="select1">
+			<option value=""></option>
+			<option value="11">11</option>
+			<option value="12">12</option>
 		</select>
 	</div>
 </div>
 
 <script src="jquery-1.9.1.min.js"></script>
-<script src="transparency.js"></script>
+<script src="pure.js"></script>
 <script src="jquery.clonetemplate.js"></script>
 <script>
-	$("select[name=select1]").cloneSelectOptions([
-		{value: "", text: ""},
-		{value: "11", text: "select11"},
-		{value: "12", text: "select12"}
-	]);
-
 	$("body").append($("#item-template > *").cloneTemplate({
 		root1: "root text",
 		nested1: "nested text",
