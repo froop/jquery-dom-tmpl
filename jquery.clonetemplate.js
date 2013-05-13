@@ -1,6 +1,8 @@
 /*
  * jquery.clonetemplate.js - jQuery plugin.
  *
+ * Depend on Transparency library (https://github.com/leonidas/transparency)
+ *
  * Created by froop http://github.com/froop/jquery-clone-template
  * The MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
@@ -9,25 +11,17 @@
 	"use strict";
 
 	/**
-	 * @param {Object} map className / input[name]: value
+	 * @param {Object} data JSON object
 	 */
-	$.fn.cloneTemplate = function (map) {
+	$.fn.cloneTemplate = function (data) {
 		var $template = this;
-		var $element = $template.clone();
+		var $element = $template
+				.clone()
+				.wrapAll("<div class='dummy'>")
+				.closest(".dummy");
 
-		function setValue($fields, value) {
-			$fields.filter("input").val(value); //TODO checkbox, radio, select
-			$fields.not("input").text(value);
-		}
+		Transparency.render($element.get(0), data);
 
-		$.each(map, function (name) {
-			//TODO refactoring
-			setValue($element.filter("." + name), map[name]);
-			setValue($element.find("." + name), map[name]);
-			setValue($element.filter("input[name=" + name + "]"), map[name]);
-			setValue($element.find("input[name=" + name + "]"), map[name]);
-		});
-
-		return $element;
+		return $element.children();
 	};
 })(jQuery);
