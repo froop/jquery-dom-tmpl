@@ -4,7 +4,7 @@
  * Created by froop http://github.com/froop/jquery-dom-tmpl
  * The MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
-/*global jQuery, Transparency */
+/*global jQuery */
 (function ($) {
 	"use strict";
 
