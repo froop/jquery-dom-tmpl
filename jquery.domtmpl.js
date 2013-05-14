@@ -47,9 +47,8 @@
 			}
 
 			$.each(data, function (name) {
-				//TODO refactoring
-				setValue($elem.find("." + name), data[name]);
-				setValue($elem.find("input[name=" + name + "]"), data[name]);
+				var selector = "." + name + "," + "input[name=" + name + "]");
+				setValue($elem.find(selector, data[name]);
 			});
 		});
 
