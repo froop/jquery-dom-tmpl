@@ -38,6 +38,12 @@
 		});
 	}
 
+	function wrap$($elem) {
+		return $elem
+				.wrapAll("<div class='wrapper'>")
+				.closest(".wrapper");
+	}
+
 	/**
 	 * Bind data to DOM.
 	 * @param {Object} data JSON object
@@ -65,9 +71,7 @@
 	 * @param {Object} data JSON object
 	 */
 	$.fn.tmplClone = function (data) {
-		var $wrapper = this.clone()
-				.wrapAll("<div class='wrapper'>")
-				.closest(".wrapper");
+		var $wrapper = wrap$(this.clone());
 		$wrapper.tmplBind(data);
 		return $wrapper.children();
 	};
@@ -91,10 +95,7 @@
 	$.fn.tmplList = function (dataList) {
 		var $elements = this;
 		renderList($elements, dataList, function ($item, data) {
-			var $wrapper = $item
-					.wrapAll("<div class='wrapper'>")
-					.closest(".wrapper");
-			$wrapper.tmplBind(data);
+			wrap$($item).tmplBind(data);
 			$item.unwrap();
 		});
 		return this;
