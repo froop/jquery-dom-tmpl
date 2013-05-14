@@ -15,6 +15,11 @@
 		return data;
 	}
 
+	function setValue($fields, value) {
+		$fields.filter("input,select").val(value); //TODO checkbox, radio
+		$fields.not("input,select").text(value);
+	}
+
 	/**
 	 * Clone and bind array of data to DOM.
 	 * @param {Array} data JSON object
@@ -40,11 +45,6 @@
 
 		$elements.each(function () {
 			var $elem = $(this);
-
-			function setValue($fields, value) {
-				$fields.filter("input,select").val(value); //TODO checkbox, radio
-				$fields.not("input,select").text(value);
-			}
 
 			$.each(data, function (name) {
 				var selId = "#" + name;
