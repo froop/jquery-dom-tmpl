@@ -28,10 +28,21 @@
 	 * @param {Object} data JSON object
 	 */
 	$.fn.cloneTemplate = function (data) {
+		var renderData = $.extend(true, {}, data);
 		var $wrapper = this.clone()
 				.wrapAll("<div class='wrapper'>")
-				.closest(".wrapper")
-				.render(data);
+				.closest(".wrapper");
+
+		$wrapper.find(":radio").each(function () {
+			var key = $(this).attr("name");
+			var value = renderData[key];
+			if (value) {
+				renderData[key + "_" + value] = true;
+				delete renderData[key];
+			}
+		});
+
+		$wrapper.render(renderData);
 
 		return $wrapper.children();
 	};
