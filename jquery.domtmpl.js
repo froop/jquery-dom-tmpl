@@ -10,33 +10,9 @@
 (function ($) {
 	"use strict";
 
-	var originalMatcher = Transparency.matcher;
-
-	// The custom matcher gets Transparency `Element` wrapper with following properties
-	// element.el:         Raw DOM element
-	// element.name:       Lower-cased name of the DOM element, e.g., 'input'
-	// element.classNames: List of class names of the DOM element, e.g., ['person', 'selected']
-	Transparency.matcher = function(element, key) {
-		var el = element.el;
-		if (el.type === "radio") {
-			return (el.name + "_" + el.value) === key;
-		}
-		return originalMatcher(element, key);
-	};
-
 	function toRadioValue($elements, data) {
-		var result = $.extend(true, {}, data);
-
-		$elements.find(":radio").each(function () {
-			var key = $(this).attr("name");
-			var value = result[key];
-			if (value) {
-				result[key + "_" + value] = true;
-				delete result[key];
-			}
-		});
-
-		return result;
+		//dummy
+		return data;
 	}
 
 	/**
@@ -52,6 +28,7 @@
 		})
 
 		$elements.render(renderArray);
+		return this;
 	};
 
 	/**
@@ -61,6 +38,7 @@
 	$.fn.tmplBind = function (data) {
 		var $elements = this;
 		$elements.render(toRadioValue($elements, data));
+		return this;
 	};
 
 	/**
@@ -82,17 +60,21 @@
 	$.fn.tmplSelectOpts = function (data) {
 		var $elements = this;
 
-		$elements.find("option").addClass("selectItem");
+		$elements.each(function () {
+			var $elem = $(this);
+			var $tmpl = $elem.data("domtmpl");
 
-		$elements.render(data, {
-			selectItem: {
-				value: function (params) {
-					return this.value;
-				},
-				text: function (params) {
-					return this.text;
-				}
+			if (!$tmpl) {
+				$tmpl = $elem.children().clone();
+				$elem.data("domtmpl", $tmpl);
 			}
+
+			$elem.empty();
+			$.each(data, function () {
+				var $opt = $tmpl.clone();
+				$opt.val(this.value).text(this.text);
+				$elem.append($opt);
+			});
 		});
 
 		return this;
