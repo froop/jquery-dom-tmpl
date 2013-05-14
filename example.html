@@ -12,9 +12,9 @@
 <body>
 
 <div id="example">
-	<div id="item-template" class="template">
-		<span class="root1"></span>
-		<div><span class="nested1"></span></div>
+	<div id="direct-bind">
+		<span id="root1"></span>
+		<div><span id="nested1"></span></div>
 		<input name="input1">
 		<input name="input2">
 		<input name="checkbox1" type="checkbox" value="1">
@@ -24,6 +24,11 @@
 			<option></option>
 		</select>
 	</div>
+
+	<ol id="clone-list"></ol>
+	<ol id="item-template" class="template">
+		<li class="text1"></li>
+	</ol>
 </div>
 
 <script src="jquery-1.9.1.min.js"></script>
@@ -36,7 +41,7 @@
 		{value: "12", text: "select12"}
 	]);
 
-	$("#item-template > *").tmplClone({
+	$("#direct-bind").tmplBind({
 		root1: "root text",
 		nested1: "nested text",
 		input1: "input text",
@@ -44,7 +49,11 @@
 		checkbox1: true,
 		radio1: "1",
 		select1: "11"
-	}).appendTo($("#example"));
+	});
+
+	$.each([{text1: "text1a"}, {text1: "text1b"}], function () {
+		$("#item-template > *").tmplClone(this).appendTo($("#clone-list"));
+	});
 </script>
 
 </body>
