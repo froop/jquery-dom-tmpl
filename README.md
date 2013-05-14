@@ -1,7 +1,7 @@
 jquery-clone-template
 =====================
 
-HTML テンプレートを DOM で用意して clone する jQuery プラグイン
+HTML テンプレートを DOM で用意して DOM のまま操作する jQuery プラグイン
 
 存在理由はこんな感じ ->
 [JavaScript テンプレートエンジン vs DOM 直接操作](https://gist.github.com/froop/5492623)
@@ -10,17 +10,25 @@ HTML テンプレートを DOM で用意して clone する jQuery プラグイ�
 
 Transparency: https://github.com/leonidas/transparency
 
-tmplClone
+tmplBind
 --------------------
-DOM 上のテンプレートを clone して値を設定。
+DOM 上のテンプレートに値を設定。
 
-	$("#item-template > *").tmplClone({
+	$("#direct-bind").tmplBind({
 		input1: "input text",
 		input2: 123,
 		checkbox1: true,
 		radio1: "1",
 		select1: "11"
-	}).appendTo($("#example"));
+	});
+
+tmplClone
+--------------------
+DOM 上のテンプレートを clone して値を設定。
+
+	$("#item-template > *").tmplClone({
+		text1: "text1a"
+	}).appendTo($("#clone-list"));
 
 tmplSelectOpts
 --------------------
