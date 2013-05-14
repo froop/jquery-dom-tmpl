@@ -42,14 +42,14 @@
 			var $elem = $(this);
 
 			function setValue($fields, value) {
-				$fields.filter("input").val(value); //TODO checkbox, radio, select
-				$fields.not("input").text(value);
+				$fields.filter("input,select").val(value); //TODO checkbox, radio
+				$fields.not("input,select").text(value);
 			}
 
 			$.each(data, function (name) {
 				var selId = "#" + name;
 				var selClass = "." + name;
-				var selName = "input[name=" + name + "]";
+				var selName = "[name=" + name + "]";
 				var selector = selId + "," + selClass + "," + selName;
 				setValue($elem.find(selector), data[name]);
 			});
