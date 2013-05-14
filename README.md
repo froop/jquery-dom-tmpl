@@ -40,3 +40,12 @@ select タグ内の option タグを配列から動的に作成。引数は valu
 		{value: "1", text: "select1"},
 		{value: "2", text: "select2"}
 	]);
+
+tmplList
+--------------------
+
+	$("#direct-list").tmplList([
+		{text2: "text2a"},
+		{text2: "text2b"}
+	]);
+	
