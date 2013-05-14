@@ -1,8 +1,6 @@
 /*
  * jquery.domtmpl.js - jQuery plugin.
  *
- * Depend on Transparency library (https://github.com/leonidas/transparency)
- *
  * Created by froop http://github.com/froop/jquery-dom-tmpl
  * The MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
