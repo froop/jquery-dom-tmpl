@@ -25,15 +25,14 @@
 	};
 
 	/**
+	 * Bind data to DOM.
 	 * @param {Object} data JSON object
 	 */
-	$.fn.tmplClone = function (data) {
+	$.fn.tmplBind = function (data) {
+		var $elements = this;
 		var renderData = $.extend(true, {}, data);
-		var $wrapper = this.clone()
-				.wrapAll("<div class='wrapper'>")
-				.closest(".wrapper");
 
-		$wrapper.find(":radio").each(function () {
+		$elements.find(":radio").each(function () {
 			var key = $(this).attr("name");
 			var value = renderData[key];
 			if (value) {
@@ -42,20 +41,31 @@
 			}
 		});
 
-		$wrapper.render(renderData);
+		$elements.render(renderData);
+	};
 
+	/**
+	 * Clone and bind data to DOM.
+	 * @param {Object} data JSON object
+	 */
+	$.fn.tmplClone = function (data) {
+		var $wrapper = this.clone()
+				.wrapAll("<div class='wrapper'>")
+				.closest(".wrapper");
+		$wrapper.tmplBind(data);
 		return $wrapper.children();
 	};
 
 	/**
+	 * Clone <option> and bind data to <select>.
 	 * @param {Array} data List of JSON object
 	 */
 	$.fn.tmplSelectOpts = function (data) {
-		var $element = this;
+		var $elements = this;
 
-		$element.find("option").addClass("selectItem");
+		$elements.find("option").addClass("selectItem");
 
-		$element.render(data, {
+		$elements.render(data, {
 			selectItem: {
 				value: function (params) {
 					return this.value;
