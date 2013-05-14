@@ -26,6 +26,20 @@
 		return $tmpl;
 	}
 
+	function renderList($elements, data, renderItem) {
+		$elements.each(function () {
+			var $elem = $(this);
+			var $tmpl = setupListTmpl($elem);
+
+			$elem.empty();
+			$.each(data, function () {
+				var $item = $tmpl.clone();
+				renderItem($item, this);
+				$elem.append($item);
+			});
+		});
+	}
+
 	/**
 	 * Clone and bind array of data to DOM.
 	 * @param {Array} data JSON object
@@ -82,19 +96,9 @@
 	 */
 	$.fn.tmplSelectOpts = function (data) {
 		var $elements = this;
-
-		$elements.each(function () {
-			var $elem = $(this);
-			var $tmpl = setupListTmpl($elem);
-
-			$elem.empty();
-			$.each(data, function () {
-				var $opt = $tmpl.clone();
-				$opt.val(this.value).text(this.text);
-				$elem.append($opt);
-			});
+		renderList($elements, data, function ($item, data) {
+			$item.val(data.value).text(data.text);
 		});
-
 		return this;
 	};
 })(jQuery);
