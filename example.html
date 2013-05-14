@@ -51,7 +51,10 @@
 		select1: "11"
 	});
 
-	$.each([{text1: "text1a"}, {text1: "text1b"}], function () {
+	$.each([
+			{text1: "text1a"},
+			{text1: "text1b"}
+	], function () {
 		$("#item-template > *").tmplClone(this).appendTo($("#clone-list"));
 	});
 </script>
