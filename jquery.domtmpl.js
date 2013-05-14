@@ -1,5 +1,5 @@
 /*
- * jquery.clonetemplate.js - jQuery plugin.
+ * jquery.domtmpl.js - jQuery plugin.
  *
  * Depend on Transparency library (https://github.com/leonidas/transparency)
  *
