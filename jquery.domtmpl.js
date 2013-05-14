@@ -27,7 +27,7 @@
 			renderArray.push(this);
 		})
 
-		$elements.render(renderArray);
+		$elements.render(renderArray); //TODO
 		return this;
 	};
 
