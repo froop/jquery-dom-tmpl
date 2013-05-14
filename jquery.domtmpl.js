@@ -17,6 +17,15 @@
 		$fields.not("input,select").text(value);
 	}
 
+	function setupListTmpl($elem) {
+		var $tmpl = $elem.data("domtmpl");
+		if (!$tmpl) {
+			$tmpl = $elem.children().clone();
+			$elem.data("domtmpl", $tmpl);
+		}
+		return $tmpl;
+	}
+
 	/**
 	 * Clone and bind array of data to DOM.
 	 * @param {Array} data JSON object
@@ -76,12 +85,7 @@
 
 		$elements.each(function () {
 			var $elem = $(this);
-			var $tmpl = $elem.data("domtmpl");
-
-			if (!$tmpl) {
-				$tmpl = $elem.children().clone();
-				$elem.data("domtmpl", $tmpl);
-			}
+			var $tmpl = setupListTmpl($elem);
 
 			$elem.empty();
 			$.each(data, function () {
