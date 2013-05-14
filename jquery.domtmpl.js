@@ -74,11 +74,11 @@
 
 	/**
 	 * Clone <option> and bind data to <select>.
-	 * @param {Array} data List of JSON object
+	 * @param {Array} dataList List of JSON object
 	 */
-	$.fn.tmplSelectOpts = function (data) {
+	$.fn.tmplSelectOpts = function (dataList) {
 		var $elements = this;
-		renderList($elements, data, function ($item, data) {
+		renderList($elements, dataList, function ($item, data) {
 			$item.val(data.value).text(data.text);
 		});
 		return this;
@@ -86,17 +86,16 @@
 
 	/**
 	 * Clone and bind array of data to DOM.
-	 * @param {Array} data JSON object
+	 * @param {Array} dataList JSON object
 	 */
-	$.fn.tmplList = function (data) {
+	$.fn.tmplList = function (dataList) {
 		var $elements = this;
-		var renderArray = [];
-
-		$.each(data, function () {
-			renderArray.push(this);
-		})
-
-		$elements.render(renderArray); //TODO
+		renderList($elements, dataList, function ($item, data) {
+			var $wrapper = $item
+					.wrapAll("<div class='wrapper'>")
+					.closest(".wrapper");
+			$wrapper.tmplBind(data);
+		});
 		return this;
 	};
 })(jQuery);
