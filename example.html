@@ -29,6 +29,10 @@
 	<ol id="item-template" class="template">
 		<li class="text1"></li>
 	</ol>
+
+	<ol id="direct-list">
+		<li class="text2"></li>
+	</ol>
 </div>
 
 <script src="jquery-1.9.1.min.js"></script>
@@ -57,6 +61,11 @@
 	], function () {
 		$("#item-template > *").tmplClone(this).appendTo($("#clone-list"));
 	});
+
+	$("#direct-list").tmplList([
+		{text2: "text2a"},
+		{text2: "text2b"}
+	]);
 </script>
 
 </body>

@@ -25,23 +25,38 @@
 	};
 
 	/**
+	 * Clone and bind array of data to DOM.
+	 * @param {Array} data JSON object
+	 */
+	$.fn.tmplList = function (data) {
+		var $elements = this;
+		var renderArray = [];
+
+		$.each(data, function () {
+			var renderData = $.extend(true, {}, this);
+
+			$elements.find(":radio").each(function () {
+				var key = $(this).attr("name");
+				var value = renderData[key];
+				if (value) {
+					renderData[key + "_" + value] = true;
+					delete renderData[key];
+				}
+			});
+
+			renderArray.push(renderData);
+		})
+
+		$elements.render(renderArray);
+	};
+
+	/**
 	 * Bind data to DOM.
 	 * @param {Object} data JSON object
 	 */
 	$.fn.tmplBind = function (data) {
 		var $elements = this;
-		var renderData = $.extend(true, {}, data);
-
-		$elements.find(":radio").each(function () {
-			var key = $(this).attr("name");
-			var value = renderData[key];
-			if (value) {
-				renderData[key + "_" + value] = true;
-				delete renderData[key];
-			}
-		});
-
-		$elements.render(renderData);
+		$elements.tmplList([data]);
 	};
 
 	/**
