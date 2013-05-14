@@ -10,6 +10,20 @@
 (function ($) {
 	"use strict";
 
+	var originalMatcher = Transparency.matcher;
+
+	// The custom matcher gets Transparency `Element` wrapper with following properties
+	// element.el:         Raw DOM element
+	// element.name:       Lower-cased name of the DOM element, e.g., 'input'
+	// element.classNames: List of class names of the DOM element, e.g., ['person', 'selected']
+	Transparency.matcher = function(element, key) {
+		var el = element.el;
+		if (el.type === "radio") {
+			return (el.name + "_" + el.value) === key;
+		}
+		return originalMatcher(element, key);
+	};
+
 	/**
 	 * @param {Object} data JSON object
 	 */

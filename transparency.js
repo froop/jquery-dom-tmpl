@@ -490,10 +490,6 @@ Radio = (function(_super) {
 
   ElementFactory.Elements['input']['radio'] = Radio;
 
-  Radio.prototype.render = function(value) {
-    return this.attr('checked', this.el.value === String(value));
-  };
-
   return Radio;
 
 })(Checkbox);
