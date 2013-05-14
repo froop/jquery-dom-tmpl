@@ -96,7 +96,6 @@
 		var $elements = this;
 		renderList($elements, dataList, function ($item, data) {
 			wrap$($item).tmplBind(data);
-			$item.unwrap();
 		});
 		return this;
 	};
