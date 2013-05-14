@@ -10,11 +10,6 @@
 (function ($) {
 	"use strict";
 
-	function toRadioValue($elements, data) {
-		//dummy
-		return data;
-	}
-
 	function setValue($fields, value) {
 		$fields.filter("input,select").val(value); //TODO checkbox, radio
 		$fields.not("input,select").text(value);
@@ -29,7 +24,7 @@
 		var renderArray = [];
 
 		$.each(data, function () {
-			renderArray.push(toRadioValue($elements, this));
+			renderArray.push(this);
 		})
 
 		$elements.render(renderArray);
