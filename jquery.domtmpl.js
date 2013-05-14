@@ -11,7 +11,9 @@
 	"use strict";
 
 	function setValue($fields, value) {
-		$fields.filter("input,select").val(value); //TODO checkbox, radio
+		$fields.filter("input,select").not(":checkbox,:radio").val(value);
+		$fields.filter(":checkbox").prop("checked", value);
+		$fields.filter(":radio").val([value]);
 		$fields.not("input,select").text(value);
 	}
 
