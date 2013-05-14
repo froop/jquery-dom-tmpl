@@ -39,22 +39,6 @@
 	}
 
 	/**
-	 * Clone and bind array of data to DOM.
-	 * @param {Array} data JSON object
-	 */
-	$.fn.tmplList = function (data) {
-		var $elements = this;
-		var renderArray = [];
-
-		$.each(data, function () {
-			renderArray.push(this);
-		})
-
-		$elements.render(renderArray); //TODO
-		return this;
-	};
-
-	/**
 	 * Bind data to DOM.
 	 * @param {Object} data JSON object
 	 */
@@ -97,6 +81,22 @@
 		renderList($elements, data, function ($item, data) {
 			$item.val(data.value).text(data.text);
 		});
+		return this;
+	};
+
+	/**
+	 * Clone and bind array of data to DOM.
+	 * @param {Array} data JSON object
+	 */
+	$.fn.tmplList = function (data) {
+		var $elements = this;
+		var renderArray = [];
+
+		$.each(data, function () {
+			renderArray.push(this);
+		})
+
+		$elements.render(renderArray); //TODO
 		return this;
 	};
 })(jQuery);
