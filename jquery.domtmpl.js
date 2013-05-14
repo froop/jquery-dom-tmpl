@@ -95,6 +95,7 @@
 					.wrapAll("<div class='wrapper'>")
 					.closest(".wrapper");
 			$wrapper.tmplBind(data);
+			$item.unwrap();
 		});
 		return this;
 	};
