@@ -37,6 +37,15 @@ select タグ内の option タグを配列から動的に作成。引数は valu
 		{value: "2", text: "select2"}
 	]);
 
+tmplRadios
+--------------------
+input:radio 及び対応する label を配列から動的に作成。引数は value, text を持つオブジェクトの配列。
+
+	$("#radios").tmplRadios([
+		{value: "1", text: "radio1"},
+		{value: "2", text: "radio2"}
+	]);
+
 tmplList
 --------------------
 
