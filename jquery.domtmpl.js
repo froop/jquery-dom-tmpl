@@ -24,6 +24,21 @@
 		return originalMatcher(element, key);
 	};
 
+	function toRadioValue($elements, data) {
+		var renderData = $.extend(true, {}, data);
+
+		$elements.find(":radio").each(function () {
+			var key = $(this).attr("name");
+			var value = renderData[key];
+			if (value) {
+				renderData[key + "_" + value] = true;
+				delete renderData[key];
+			}
+		});
+
+		return renderData;
+	}
+
 	/**
 	 * Clone and bind array of data to DOM.
 	 * @param {Array} data JSON object
@@ -33,18 +48,7 @@
 		var renderArray = [];
 
 		$.each(data, function () {
-			var renderData = $.extend(true, {}, this);
-
-			$elements.find(":radio").each(function () {
-				var key = $(this).attr("name");
-				var value = renderData[key];
-				if (value) {
-					renderData[key + "_" + value] = true;
-					delete renderData[key];
-				}
-			});
-
-			renderArray.push(renderData);
+			renderArray.push(toRadioValue($elements, this));
 		})
 
 		$elements.render(renderArray);
@@ -56,7 +60,7 @@
 	 */
 	$.fn.tmplBind = function (data) {
 		var $elements = this;
-		$elements.tmplList([data]);
+		$elements.render(toRadioValue($elements, data));
 	};
 
 	/**
