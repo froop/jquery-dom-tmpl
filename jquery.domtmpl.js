@@ -80,7 +80,7 @@
 
 	/**
 	 * Clone <option> and bind data to <select>.
-	 * @param {Array} dataList List of JSON object
+	 * @param {Array} dataList List of JSON object (value, text)
 	 */
 	$.fn.tmplSelectOpts = function (dataList) {
 		var $elements = this;
@@ -91,8 +91,21 @@
 	};
 
 	/**
+	 * Clone <input type="radio"> and bind data to DOM.
+	 * @param {Array} dataList List of JSON object (value, text)
+	 */
+	$.fn.tmplRadios = function (dataList) {
+		var $elements = this;
+		renderList($elements, dataList, function ($item, data) {
+			$item.find(":radio").val(data.value);
+			$item.find("label").text(data.text);
+		});
+		return this;
+	};
+
+	/**
 	 * Clone and bind array of data to DOM.
-	 * @param {Array} dataList JSON object
+	 * @param {Array} dataList List of JSON object
 	 */
 	$.fn.tmplList = function (dataList) {
 		var $elements = this;

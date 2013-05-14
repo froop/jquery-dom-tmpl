@@ -18,8 +18,9 @@
 		<input name="input1">
 		<input name="input2">
 		<input name="checkbox1" type="checkbox" value="1">
-		<input name="radio1" type="radio" value="1">
-		<input name="radio1" type="radio" value="2">
+		<span id="radios">
+			<span><input name="radio1" type="radio"><label></label></span>
+		</span>
 		<select name="select1">
 			<option></option>
 		</select>
@@ -42,6 +43,10 @@
 		{value: "", text: ""},
 		{value: "11", text: "select11"},
 		{value: "12", text: "select12"}
+	]);
+	$("#radios").tmplRadios([
+		{value: "1", text: "r1"},
+		{value: "2", text: "r2"}
 	]);
 
 	$("#direct-bind").tmplBind({
