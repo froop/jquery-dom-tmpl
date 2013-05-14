@@ -14,11 +14,13 @@ tmplClone
 --------------------
 DOM 上のテンプレートを clone して値を設定。
 
-	$("body").append($("#item-template > *").tmplClone({
+	$("#item-template > *").tmplClone({
 		input1: "input text",
 		input2: 123,
-		checkbox1: true
-	}));
+		checkbox1: true,
+		radio1: "1",
+		select1: "11"
+	}).appendTo($("#example"));
 
 tmplSelectOpts
 --------------------
