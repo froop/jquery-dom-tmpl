@@ -13,6 +13,7 @@ Transparency: https://github.com/leonidas/transparency
 tmplBind
 --------------------
 DOM 上のテンプレートに値を設定。
+Transparency と違い、`input:radio` の同一 name 属性グループ単位の checked 設定に対応。
 
 	$("#direct-bind").tmplBind({
 		input1: "input text",
