@@ -1,4 +1,4 @@
-jquery-clone-template
+jquery-dom-tmpl
 =====================
 
 HTML テンプレートを DOM で用意して DOM のまま操作する jQuery プラグイン
