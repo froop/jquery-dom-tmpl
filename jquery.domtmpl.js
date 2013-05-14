@@ -47,8 +47,11 @@
 			}
 
 			$.each(data, function (name) {
-				var selector = "." + name + "," + "input[name=" + name + "]");
-				setValue($elem.find(selector, data[name]);
+				var selId = "#" + name;
+				var selClass = "." + name;
+				var selName = "input[name=" + name + "]";
+				var selector = selId + "," + selClass + "," + selName;
+				setValue($elem.find(selector), data[name]);
 			});
 		});
 
