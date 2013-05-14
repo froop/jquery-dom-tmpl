@@ -50,7 +50,7 @@
 	/**
 	 * @param {Array} data List of JSON object
 	 */
-	$.fn.cloneSelectOptions = function (data) {
+	$.fn.tmplSelectOpts = function (data) {
 		var $element = this;
 
 		$element.find("option").addClass("selectItem");

@@ -20,11 +20,11 @@ DOM 上のテンプレートを clone して値を設定。
 		checkbox1: true
 	}));
 
-cloneSelectOptions
+tmplSelectOpts
 --------------------
 select タグ内の option タグを配列から動的に作成。引数は value, text を持つオブジェクトの配列。
 
-	$("select[name=select1]").cloneSelectOptions([
+	$("select[name=select1]").tmplSelectOpts([
 		{value: "", text: ""},
 		{value: "1", text: "select1"},
 		{value: "2", text: "select2"}
