@@ -37,7 +37,22 @@
 	 */
 	$.fn.tmplBind = function (data) {
 		var $elements = this;
-		$elements.render(toRadioValue($elements, data));
+
+		$elements.each(function () {
+			var $elem = $(this);
+
+			function setValue($fields, value) {
+				$fields.filter("input").val(value); //TODO checkbox, radio, select
+				$fields.not("input").text(value);
+			}
+
+			$.each(data, function (name) {
+				//TODO refactoring
+				setValue($elem.find("." + name), data[name]);
+				setValue($elem.find("input[name=" + name + "]"), data[name]);
+			});
+		});
+
 		return this;
 	};
 
