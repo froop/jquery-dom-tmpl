@@ -40,8 +40,8 @@
 		});
 	}
 
-	function wrap$($elem) {
-		return $elem
+	function wrap$($elems) {
+		return $elems
 				.wrapAll("<div class='wrapper'>")
 				.closest(".wrapper");
 	}
