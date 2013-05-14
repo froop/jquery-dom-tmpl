@@ -25,18 +25,18 @@
 	};
 
 	function toRadioValue($elements, data) {
-		var renderData = $.extend(true, {}, data);
+		var result = $.extend(true, {}, data);
 
 		$elements.find(":radio").each(function () {
 			var key = $(this).attr("name");
-			var value = renderData[key];
+			var value = result[key];
 			if (value) {
-				renderData[key + "_" + value] = true;
-				delete renderData[key];
+				result[key + "_" + value] = true;
+				delete result[key];
 			}
 		});
 
-		return renderData;
+		return result;
 	}
 
 	/**
