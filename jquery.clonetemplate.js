@@ -27,7 +27,7 @@
 	/**
 	 * @param {Object} data JSON object
 	 */
-	$.fn.cloneTemplate = function (data) {
+	$.fn.tmplClone = function (data) {
 		var renderData = $.extend(true, {}, data);
 		var $wrapper = this.clone()
 				.wrapAll("<div class='wrapper'>")

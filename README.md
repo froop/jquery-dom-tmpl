@@ -10,11 +10,11 @@ HTML テンプレートを DOM で用意して clone する jQuery プラグイ�
 
 Transparency: https://github.com/leonidas/transparency
 
-cloneTemplate
+tmplClone
 --------------------
 DOM 上のテンプレートを clone して値を設定。
 
-	$("body").append($("#item-template > *").cloneTemplate({
+	$("body").append($("#item-template > *").tmplClone({
 		input1: "input text",
 		input2: 123,
 		checkbox1: true
