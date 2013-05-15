@@ -40,20 +40,6 @@
 		wrap$().tmplBind(data, options);
 	}
 
-	function renderList($elements, data, options) {
-		$elements.each(function () {
-			var $elem = $(this);
-			var $tmpl = setupListTmpl($elem);
-
-			$elem.empty();
-			$.each(data, function () {
-				var $item = $tmpl.clone();
-				bindItem($item, this, options);
-				$elem.append($item);
-			});
-		});
-	}
-
 	/**
 	 * Bind data to DOM.
 	 * @param {Object} data JSON object
@@ -133,6 +119,21 @@
 	 */
 	$.fn.tmplList = function (dataList, options) {
 		var $elements = this;
+
+		function renderList($elements, data, options) {
+			$elements.each(function () {
+				var $elem = $(this);
+				var $tmpl = setupListTmpl($elem);
+
+				$elem.empty();
+				$.each(data, function () {
+					var $item = $tmpl.clone();
+					bindItem($item, this, options);
+					$elem.append($item);
+				});
+			});
+		}
+
 		renderList($elements, dataList, options);
 		return this;
 	};
