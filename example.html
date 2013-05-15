@@ -70,12 +70,8 @@
 		$("#item-template > *").tmplClone(this).appendTo($("#clone-list"));
 	});
 
-	$.each([
-		{clone2: "clone21"},
-		{clone2: "clone22"}
-	], function () {
-		$("#clone-list2").tmplCloneItem(this);
-	});
+	$("#clone-list2").tmplListAppend({clone2: "clone21"});
+	$("#clone-list2").tmplListAppend({clone2: "clone22"});
 
 	$("#direct-list").tmplList([
 		{list1: "list11"},

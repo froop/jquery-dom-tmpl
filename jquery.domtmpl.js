@@ -77,10 +77,10 @@
 	};
 
 	/**
-	 * Clone list item and bind data.
+	 * Append list item and bind data.
 	 * @param {Object} data JSON object
 	 */
-	$.fn.tmplCloneItem = function (data) {
+	$.fn.tmplListAppend = function (data) {
 		var $elem = this;
 		var $tmpl = setupListTmpl($elem);
 		var $item = $tmpl.tmplClone(data);
