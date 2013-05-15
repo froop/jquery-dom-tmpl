@@ -49,9 +49,9 @@
 	$.fn.tmplBind = function (data, options) {
 		var $elements = this;
 		var defaults = {
-				find: {},
-				attr: {},
-				prop: {}
+			find: {},
+			attr: {},
+			prop: {}
 		};
 		var setting = $.extend(defaults, options);
 
@@ -134,12 +134,25 @@
 	/**
 	 * Bind array of value-text to select options (or :radio, :checkbox).
 	 * @param {Array} dataList List of JSON object (value, text)
+	 * @param {Object} options
 	 * @returns {jQuery} for method chain
 	 */
-	$.fn.tmplSelectOpts = function (dataList) {
+	$.fn.tmplSelectOpts = function (dataList, options) {
 		var $elements = this;
+		var defaults = {
+			canEmpty: false,
+			emptyText: ""
+		};
+		var setting = $.extend(defaults, options);
 		function isSelect($elem) {
 			return $elem.find("option").length > 0;
+		}
+
+		if (setting.canEmpty) {
+			dataList.unshift({
+				value: "",
+				text: setting.emptyText
+			});
 		}
 		$elements.tmplList(dataList, {
 			find: {

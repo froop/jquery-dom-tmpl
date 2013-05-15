@@ -42,10 +42,12 @@
 <script src="jquery.domtmpl.js"></script>
 <script>
 	$("select[name=select1]").tmplSelectOpts([
-		{value: "", text: ""},
 		{value: "s1", text: "select11"},
 		{value: "s2", text: "select12"}
-	]);
+	], {
+		canEmpty: true,
+		emptyText: "none"
+	});
 	$("#radios").tmplSelectOpts([
 		{value: "r1", text: "radio11"},
 		{value: "r2", text: "radio12"}
