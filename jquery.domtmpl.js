@@ -53,6 +53,7 @@
 	/**
 	 * Bind data to DOM.
 	 * @param {Object} data JSON object
+	 * @returns {jQuery} for method chain
 	 */
 	$.fn.tmplBind = function (data) {
 		var $elements = this;
@@ -69,6 +70,7 @@
 	/**
 	 * Clone and bind data to DOM.
 	 * @param {Object} data JSON object
+	 * @returns {jQuery} cloned element
 	 */
 	$.fn.tmplClone = function (data) {
 		var $item = this.clone();
@@ -79,6 +81,7 @@
 	/**
 	 * Append list item and bind data.
 	 * @param {Object} data JSON object
+	 * @returns {jQuery} appended item
 	 */
 	$.fn.tmplListAppend = function (data) {
 		var $elem = this;
@@ -91,6 +94,7 @@
 	/**
 	 * Bind array of value-text to select options (or :radio, :checkbox).
 	 * @param {Array} dataList List of JSON object (value, text)
+	 * @returns {jQuery} for method chain
 	 */
 	$.fn.tmplSelectOpts = function (dataList) {
 		var $elements = this;
@@ -108,6 +112,7 @@
 	/**
 	 * Bind array of data to list items.
 	 * @param {Array} dataList List of JSON object
+	 * @returns {jQuery} for method chain
 	 */
 	$.fn.tmplList = function (dataList) {
 		var $elements = this;
