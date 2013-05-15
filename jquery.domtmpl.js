@@ -126,6 +126,18 @@
 	};
 
 	/**
+	 * Bind array of data to list items.
+	 * @param {Array} dataList List of JSON object
+	 * @param {Object} options
+	 * @returns {jQuery} for method chain
+	 */
+	$.fn.tmplList = function (dataList, options) {
+		var $elements = this;
+		renderList($elements, dataList, bindItem, options);
+		return this;
+	};
+
+	/**
 	 * Bind array of value-text to select options (or :radio, :checkbox).
 	 * @param {Array} dataList List of JSON object (value, text)
 	 * @returns {jQuery} for method chain
@@ -150,18 +162,6 @@
 				}
 			}
 		});
-		return this;
-	};
-
-	/**
-	 * Bind array of data to list items.
-	 * @param {Array} dataList List of JSON object
-	 * @param {Object} options
-	 * @returns {jQuery} for method chain
-	 */
-	$.fn.tmplList = function (dataList, options) {
-		var $elements = this;
-		renderList($elements, dataList, bindItem, options);
 		return this;
 	};
 })(jQuery);
