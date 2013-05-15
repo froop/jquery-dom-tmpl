@@ -13,8 +13,8 @@
 
 <div id="example">
 	<div id="direct-bind">
-		<span id="root1"></span>
-		<div><span id="nested1"></span></div>
+		<span id="text1"></span>
+		<div><span id="text2"></span></div>
 		<input name="input1">
 		<input name="input2">
 		<input name="checkbox1" type="checkbox" value="1">
@@ -28,11 +28,11 @@
 
 	<ol id="clone-list"></ol>
 	<ol id="item-template" class="template">
-		<li class="text1"></li>
+		<li class="clone1"></li>
 	</ol>
 
 	<ol id="direct-list">
-		<li class="text2"></li>
+		<li class="list1"></li>
 	</ol>
 </div>
 
@@ -41,34 +41,34 @@
 <script>
 	$("select[name=select1]").tmplSelectOpts([
 		{value: "", text: ""},
-		{value: "o1", text: "option1"},
-		{value: "o2", text: "option2"}
+		{value: "s1", text: "select11"},
+		{value: "s2", text: "select12"}
 	]);
 	$("#radios").tmplSelectOpts([
-		{value: "r1", text: "radio1"},
-		{value: "r2", text: "radio2"}
+		{value: "r1", text: "radio11"},
+		{value: "r2", text: "radio12"}
 	]);
 
 	$("#direct-bind").tmplBind({
-		root1: "root text",
-		nested1: "nested text",
+		text1: "root text",
+		text2: "nested text",
 		input1: "input text",
 		input2: 123,
 		checkbox1: true,
-		select1: "o1",
+		select1: "s1",
 		radio1: "r1"
 	});
 
 	$.each([
-		{text1: "text1a"},
-		{text1: "text1b"}
+		{clone1: "clone11"},
+		{clone1: "clone12"}
 	], function () {
 		$("#item-template > *").tmplClone(this).appendTo($("#clone-list"));
 	});
 
 	$("#direct-list").tmplList([
-		{text2: "text2a"},
-		{text2: "text2b"}
+		{list1: "list11"},
+		{list1: "list12"}
 	]);
 </script>
 
