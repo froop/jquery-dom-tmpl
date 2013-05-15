@@ -22,12 +22,10 @@
 		<div id="checks">
 			<span><input name="checkbox2" type="checkbox"><label></label></span>
 		</div>
-		<div id="custom11"></div>
-		<div id="custom12"></div>
+		<div><label id="custom11"></label><input name="custom12"></div>
 		<div id="custom2">
-			<label></label>
-			<input name="custom21">
-			<a id="custom22">link</a>
+			<a id="custom21"></a>
+			<input name="custom22">
 		</div>
 	</div>
 
@@ -70,20 +68,19 @@
 		alternate1: "alt1",
 		alternate21: "alt21",
 		alternate22: "alt22",
-		custom21: true,
-		custom22: "http://google.co.jp/"
+		custom21: "http://google.co.jp/",
+		custom22: true,
 	}, {
 		selector: {
-			alternate1: "#custom11,#custom12",
-			alternate21: "#custom2 > label",
+			alternate1: "#custom11,[name=custom12]",
+			alternate21: "#custom21",
 			alternate22: "#custom2 > input",
-			alternate23: "#custom2 > input"
 		},
 		attr: {
-			custom22: "href"
+			custom21: "href"
 		},
 		prop: {
-			custom21: "disabled"
+			custom22: "disabled"
 		}
 	});
 

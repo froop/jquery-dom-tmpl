@@ -17,7 +17,7 @@ DOM 上のテンプレートに値を設定。
 #### HTML
 
 	<div id="direct-bind">
-		<span id="text1"></span>
+		<div id="text1"></div>
 		<div><span id="text2"></span></div>
 		<input name="input1">
 		<input name="input2">
@@ -27,15 +27,20 @@ DOM 上のテンプレートに値を設定。
 			<option value="s1">select1</option>
 			<option value="s2">select2</option>
 		</select>
-		<span id="radios">
+		<div id="radios">
 			<span><input name="radio1" type="radio" value="r1"><label>radio1</label></span>
 			<span><input name="radio1" type="radio" value="r2"><label>radio2</label></span>
-		</span>
-		<span id="checks">
+		</div>
+		<div id="checks">
 			<span><input name="checkbox2" type="checkbox" value="c1"><label>check1</label></span>
 			<span><input name="checkbox2" type="checkbox" value="c2"><label>check2</label></span>
 			<span><input name="checkbox2" type="checkbox" value="c3"><label>check3</label></span>
-		</span>
+		</div>
+		<div><label id="custom11"></label><input name="custom12"></div>
+		<div id="custom2">
+			<a id="custom21"></a>
+			<input name="custom22">
+		</div>
 	</div>
 
 #### JavaScript
@@ -48,13 +53,30 @@ DOM 上のテンプレートに値を設定。
 		checkbox1: true,
 		select1: "s1",
 		radio1: "r1",
-		checkbox2: ["c1", "c3"]
+		checkbox2: ["c1", "c3"],
+		alternate1: "alt1",
+		alternate21: "alt21",
+		alternate22: "alt22",
+		custom21: "http://google.co.jp/",
+		custom22: true,
+	}, {
+		selector: {
+			alternate1: "#custom11,[name=custom12]",
+			alternate21: "#custom21",
+			alternate22: "#custom2 > input",
+		},
+		attr: {
+			custom21: "href"
+		},
+		prop: {
+			custom22: "disabled"
+		}
 	});
 
 #### result
 
 	<div id="direct-bind">
-		<span id="text1">root text</span>
+		<div id="text1">root text</div>
 		<div><span id="text2">nested text</span></div>
 		<input name="input1" value="input text">
 		<input name="input2" value="123">
@@ -64,15 +86,20 @@ DOM 上のテンプレートに値を設定。
 			<option value="s1" selected>select1</option>
 			<option value="s2">select2</option>
 		</select>
-		<span id="radios">
+		<div id="radios">
 			<span><input name="radio1" type="radio" value="r1" checked><label>radio1</label></span>
 			<span><input name="radio1" type="radio" value="r2"><label>radio2</label></span>
-		</span>
-		<span id="checks">
+		</div>
+		<div id="checks">
 			<span><input name="checkbox2" type="checkbox" value="c1" checked><label>check1</label></span>
 			<span><input name="checkbox2" type="checkbox" value="c2"><label>check2</label></span>
 			<span><input name="checkbox2" type="checkbox" value="c3" checked><label>check3</label></span>
-		</span>
+		</div>
+		<div><label id="custom11">alt1</label><input name="custom12" value="alt1"></div>
+		<div id="custom2">
+			<a id="custom21" href="http://google.co.jp/">alt21</a>
+			<input name="custom22" value="alt22" disabled>
+		</div>
 	</div>
 
 tmplAppend
