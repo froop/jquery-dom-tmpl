@@ -101,12 +101,13 @@
 	/**
 	 * Append list item and bind data.
 	 * @param {Object} data JSON object
+	 * @param {Object} options
 	 * @returns {jQuery} appended item
 	 */
-	$.fn.tmplAppend = function (data) {
+	$.fn.tmplAppend = function (data, options) {
 		var $elem = this;
 		var $tmpl = setupListTmpl($elem);
-		var $item = $tmpl.tmplClone(data);
+		var $item = $tmpl.tmplClone(data, options);
 		$elem.append($item);
 		return $item;
 	};
