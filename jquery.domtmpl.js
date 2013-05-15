@@ -55,6 +55,14 @@
 		};
 		var setting = $.extend(defaults, options);
 
+		function callIfFunction(target) {
+			if (typeof target === "function") {
+				return target($elements);
+			} else {
+				return target;
+			}
+		}
+
 		$.each(data, function (name, value) {
 			function defaultSelector() {
 				var selId = "#" + name;
@@ -62,19 +70,11 @@
 				var selName = "[name=" + name + "]";
 				return [selId, selClass, selName].join(",");
 			}
-
-			function callIfFunction(target) {
-				if (typeof target === "function") {
-					return target($elements);
-				} else {
-					return target;
-				}
-			}
-
 			var selector = callIfFunction(setting.selector[name]);
 			var attr = callIfFunction(setting.attr[name]);
 			var prop = callIfFunction(setting.prop[name]);
 			var $target = $elements.find(selector || defaultSelector());
+
 			if (attr) {
 				$target.attr(attr, value);
 			} else if (prop) {
