@@ -135,7 +135,7 @@
 		function isSelect($elem) {
 			return $elem.find("option").length > 0;
 		}
-		renderList($elements, dataList, bindItem, {
+		$elements.tmplList(dataList, {
 			selector: {
 				value: function ($elem) {
 					return isSelect($elem) ? "option" : "input";
