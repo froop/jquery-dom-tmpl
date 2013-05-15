@@ -124,6 +124,7 @@
 			var $tmpl = setupListTmpl($elem);
 			$elem.empty();
 			$.each(dataList, function () {
+				//TODO $elem.tmplAppend(this, options);
 				$tmpl.tmplClone(this, options).appendTo($elem);
 			});
 		});
