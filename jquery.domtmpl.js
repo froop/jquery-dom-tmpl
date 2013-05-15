@@ -31,7 +31,7 @@
 		return $tmpl;
 	}
 
-	function renderList($elements, data, renderItem) {
+	function renderList($elements, data, renderItem, options) {
 		$elements.each(function () {
 			var $elem = $(this);
 			var $tmpl = setupListTmpl($elem);
@@ -39,19 +39,19 @@
 			$elem.empty();
 			$.each(data, function () {
 				var $item = $tmpl.clone();
-				renderItem($item, this);
+				renderItem($item, this, options);
 				$elem.append($item);
 			});
 		});
 	}
 
-	function bindItem($elements, data) {
+	function bindItem($elements, data, options) {
 		function wrap$() {
 			return $elements
 					.wrapAll("<div class='wrapper'>")
 					.closest(".wrapper");
 		}
-		wrap$().tmplBind(data);
+		wrap$().tmplBind(data, options);
 	}
 
 	/**
@@ -96,11 +96,12 @@
 	/**
 	 * Clone and bind data to DOM.
 	 * @param {Object} data JSON object
+	 * @param {Object} options
 	 * @returns {jQuery} cloned element
 	 */
-	$.fn.tmplClone = function (data) {
+	$.fn.tmplClone = function (data, options) {
 		var $item = this.clone();
-		bindItem($item, data);
+		bindItem($item, data, options);
 		return $item;
 	};
 
@@ -138,11 +139,12 @@
 	/**
 	 * Bind array of data to list items.
 	 * @param {Array} dataList List of JSON object
+	 * @param {Object} options
 	 * @returns {jQuery} for method chain
 	 */
-	$.fn.tmplList = function (dataList) {
+	$.fn.tmplList = function (dataList, options) {
 		var $elements = this;
-		renderList($elements, dataList, bindItem);
+		renderList($elements, dataList, bindItem, options);
 		return this;
 	};
 })(jQuery);
