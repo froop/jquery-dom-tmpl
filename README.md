@@ -38,28 +38,24 @@ Transparency と違い、`input:radio` の同一 name 属性グループ単位�
 		radio1: "r1"
 	});
 
-tmplClone
+tmplAppend
 --------------------
-DOM 上のテンプレートを clone して値を設定。値設定は内部で上記 tmplBind を使用するのでそちらを参照。
+指定要素内のテンプレートを `clone()` して子要素を追加する。戻り値として追加した要素を返す。
+値設定は内部で `tmplBind()` を使用するのでそちらを参照。
 
-	<ol id="clone-list"></ol>
-	<ol id="item-template" class="template">
+	<ol id="clone-list">
 		<li class="clone1"></li>
 	</ol>
 
-	$.each([
-		{clone1: "clone11"},
-		{clone1: "clone12"}
-	], function () {
-		$("#item-template > *").tmplClone(this).appendTo($("#clone-list"));
-	});
+	$("#clone-list").tmplAppend({clone1: "clone11"}).css({color: "red"});
+	$("#clone-list").tmplAppend({clone1: "clone12"}).css({color: "blue"});
 
 tmplSelectOpts
 --------------------
 内部値と表示文字列を組み合わせた選択肢項目を配列から動的に作成。
 引数はプロパティに value, text を持つオブジェクトの配列。
 
-テンプレートは下記に対応する。
+下記のテンプレートに対応する。
 
 * select タグ内の option タグ
 * input タグ (radio, checkbox を想定) 及び対応する label タグ
@@ -83,6 +79,7 @@ tmplSelectOpts
 
 tmplList
 --------------------
+一覧を一括設定。値設定は内部で `tmplBind()` を使用するのでそちらを参照。
 
 	<ol id="direct-list">
 		<li class="list1"></li>
