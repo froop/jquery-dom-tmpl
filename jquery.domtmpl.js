@@ -57,15 +57,25 @@
 	/**
 	 * Bind data to DOM.
 	 * @param {Object} data JSON object
+	 * @param {Object} options
 	 * @returns {jQuery} for method chain
 	 */
-	$.fn.tmplBind = function (data) {
+	$.fn.tmplBind = function (data, options) {
 		var $elements = this;
+		var defaults = {
+				selector : {}
+		};
+		var setting = $.extend(defaults, options);
+
 		$.each(data, function (name, value) {
-			var selId = "#" + name;
-			var selClass = "." + name;
-			var selName = "[name=" + name + "]";
-			var selector = [selId, selClass, selName].join(",");
+			function defaultSelector() {
+				var selId = "#" + name;
+				var selClass = "." + name;
+				var selName = "[name=" + name + "]";
+				return [selId, selClass, selName].join(",");
+			}
+			var selector = setting.selector[name] || defaultSelector();
+console.log(selector);
 			setValue($elements.find(selector), value);
 		});
 		return this;

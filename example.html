@@ -8,7 +8,7 @@
 
 <div id="example">
 	<div id="direct-bind">
-		<span id="text1"></span>
+		<div id="text1"></div>
 		<div><span id="text2"></span></div>
 		<input name="input1">
 		<input name="input2">
@@ -16,12 +16,14 @@
 		<select name="select1">
 			<option></option>
 		</select>
-		<span id="radios">
+		<div id="radios">
 			<span><input name="radio1" type="radio"><label></label></span>
-		</span>
-		<span id="checks">
+		</div>
+		<div id="checks">
 			<span><input name="checkbox2" type="checkbox"><label></label></span>
-		</span>
+		</div>
+		<div id="custom1"></div>
+		<div id="custom2"></div>
 	</div>
 
 	<ol id="clone-list">
@@ -59,7 +61,12 @@
 		checkbox1: true,
 		select1: "s1",
 		radio1: "r1",
-		checkbox2: ["c1", "c3"]
+		checkbox2: ["c1", "c3"],
+		alternate1: "alternate1"
+	}, {
+		selector: {
+			alternate1: "#custom1,#custom2"
+		}
 	});
 
 	$("#clone-list").tmplAppend({clone1: "clone11"}).css({color: "red"});
