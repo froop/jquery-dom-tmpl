@@ -64,7 +64,8 @@
 		var $elements = this;
 		var defaults = {
 				selector: {},
-				attr: {}
+				attr: {},
+				prop: {}
 		};
 		var setting = $.extend(defaults, options);
 
@@ -75,11 +76,16 @@
 				var selName = "[name=" + name + "]";
 				return [selId, selClass, selName].join(",");
 			}
+
 			var selector = setting.selector[name];
 			var attr = setting.attr[name];
+			var prop = setting.prop[name];
 			var $target = $elements.find(selector || defaultSelector());
+
 			if (attr) {
 				$target.attr(attr, value);
+			} else if (prop) {
+				$target.prop(prop, value);
 			} else {
 				setValue($target, value);
 			}
