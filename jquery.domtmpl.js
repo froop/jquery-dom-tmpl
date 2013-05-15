@@ -79,7 +79,7 @@
 	};
 
 	/**
-	 * Clone <option> and bind data to <select>.
+	 * Clone <option> and bind array of data to <select>.
 	 * @param {Array} dataList List of JSON object (value, text)
 	 */
 	$.fn.tmplSelectOpts = function (dataList) {
@@ -91,7 +91,7 @@
 	};
 
 	/**
-	 * Clone <input type="radio"> and bind data to DOM.
+	 * Clone <input type="radio"> and bind array of data to DOM.
 	 * @param {Array} dataList List of JSON object (value, text)
 	 */
 	$.fn.tmplRadios = function (dataList) {
