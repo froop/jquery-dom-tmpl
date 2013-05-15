@@ -83,7 +83,7 @@
 	 * @param {Object} data JSON object
 	 * @returns {jQuery} appended item
 	 */
-	$.fn.tmplListAppend = function (data) {
+	$.fn.tmplAppend = function (data) {
 		var $elem = this;
 		var $tmpl = setupListTmpl($elem);
 		var $item = $tmpl.tmplClone(data);
