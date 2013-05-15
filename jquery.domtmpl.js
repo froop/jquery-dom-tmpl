@@ -151,7 +151,7 @@
 				}
 			},
 			attr: {
-				value: function ($elem) {
+				value: function () {
 					return "value";
 				}
 			}
