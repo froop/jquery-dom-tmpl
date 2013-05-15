@@ -19,6 +19,9 @@
 		<span id="radios">
 			<span><input name="radio1" type="radio"><label></label></span>
 		</span>
+		<span id="checks">
+			<span><input name="checkbox2" type="checkbox"><label></label></span>
+		</span>
 	</div>
 
 	<ol id="clone-list">
@@ -42,6 +45,11 @@
 		{value: "r1", text: "radio11"},
 		{value: "r2", text: "radio12"}
 	]);
+	$("#checks").tmplSelectOpts([
+		{value: "c1", text: "check21"},
+		{value: "c2", text: "check22"},
+		{value: "c3", text: "check22"}
+	]);
 
 	$("#direct-bind").tmplBind({
 		text1: "root text",
@@ -50,7 +58,8 @@
 		input2: 123,
 		checkbox1: true,
 		select1: "s1",
-		radio1: "r1"
+		radio1: "r1",
+		checkbox2: ["c1", "c3"]
 	});
 
 	$("#clone-list").tmplAppend({clone1: "clone11"}).css({color: "red"});

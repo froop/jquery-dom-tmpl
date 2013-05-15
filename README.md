@@ -31,6 +31,11 @@ DOM 上のテンプレートに値を設定。
 			<span><input name="radio1" type="radio" value="r1"><label>radio1</label></span>
 			<span><input name="radio1" type="radio" value="r2"><label>radio2</label></span>
 		</span>
+		<span id="checks">
+			<span><input name="checkbox2" type="checkbox" value="c1"><label>check1</label></span>
+			<span><input name="checkbox2" type="checkbox" value="c2"><label>check2</label></span>
+			<span><input name="checkbox2" type="checkbox" value="c3"><label>check3</label></span>
+		</span>
 	</div>
 
 #### JavaScript
@@ -42,7 +47,8 @@ DOM 上のテンプレートに値を設定。
 		input2: 123,
 		checkbox1: true,
 		select1: "s1",
-		radio1: "r1"
+		radio1: "r1",
+		checkbox2: ["c1", "c3"]
 	});
 
 #### 結果
@@ -61,6 +67,11 @@ DOM 上のテンプレートに値を設定。
 		<span id="radios">
 			<span><input name="radio1" type="radio" value="r1" checked><label>radio1</label></span>
 			<span><input name="radio1" type="radio" value="r2"><label>radio2</label></span>
+		</span>
+		<span id="checks">
+			<span><input name="checkbox2" type="checkbox" value="c1" checked><label>check1</label></span>
+			<span><input name="checkbox2" type="checkbox" value="c2"><label>check2</label></span>
+			<span><input name="checkbox2" type="checkbox" value="c3" checked><label>check3</label></span>
 		</span>
 	</div>
 
