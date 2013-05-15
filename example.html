@@ -3,11 +3,6 @@
 <head>
 	<meta charset="utf-8">
 	<title>jquery.domtmpl.js example</title>
-	<style>
-		.template {
-			display: none;
-		}
-	</style>
 </head>
 <body>
 
@@ -26,13 +21,8 @@
 		</span>
 	</div>
 
-	<ol id="clone-list"></ol>
-	<ol id="item-template" class="template">
+	<ol id="clone-list">
 		<li class="clone1"></li>
-	</ol>
-
-	<ol id="clone-list2">
-		<li class="clone2"></li>
 	</ol>
 
 	<ol id="direct-list">
@@ -63,15 +53,8 @@
 		radio1: "r1"
 	});
 
-	$.each([
-		{clone1: "clone11"},
-		{clone1: "clone12"}
-	], function () {
-		$("#item-template > *").tmplClone(this).appendTo($("#clone-list"));
-	});
-
-	$("#clone-list2").tmplListAppend({clone2: "clone21"});
-	$("#clone-list2").tmplListAppend({clone2: "clone22"});
+	$("#clone-list").tmplListAppend({clone1: "clone11"}).css({color: "red"});
+	$("#clone-list").tmplListAppend({clone1: "clone12"}).css({color: "blue"});
 
 	$("#direct-list").tmplList([
 		{list1: "list11"},
