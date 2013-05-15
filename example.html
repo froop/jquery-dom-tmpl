@@ -31,6 +31,10 @@
 		<li class="clone1"></li>
 	</ol>
 
+	<ol id="clone-list2">
+		<li class="clone2"></li>
+	</ol>
+
 	<ol id="direct-list">
 		<li class="list1"></li>
 	</ol>
@@ -64,6 +68,13 @@
 		{clone1: "clone12"}
 	], function () {
 		$("#item-template > *").tmplClone(this).appendTo($("#clone-list"));
+	});
+
+	$.each([
+		{clone2: "clone21"},
+		{clone2: "clone22"}
+	], function () {
+		$("#clone-list2").tmplCloneItem(this);
 	});
 
 	$("#direct-list").tmplList([

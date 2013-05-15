@@ -22,6 +22,7 @@
 		if (!$tmpl) {
 			$tmpl = $elem.children().clone();
 			$elem.data("domtmpl", $tmpl);
+			$elem.empty();
 		}
 		return $tmpl;
 	}
@@ -72,6 +73,18 @@
 	$.fn.tmplClone = function (data) {
 		var $item = this.clone();
 		bindItem($item, data);
+		return $item;
+	};
+
+	/**
+	 * Clone list item and bind data.
+	 * @param {Object} data JSON object
+	 */
+	$.fn.tmplCloneItem = function (data) {
+		var $elem = this;
+		var $tmpl = setupListTmpl($elem);
+		var $item = $tmpl.tmplClone(data);
+		$elem.append($item);
 		return $item;
 	};
 
