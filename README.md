@@ -12,7 +12,7 @@ DOM 上のテンプレートに値を設定。
 [Transparency](https://github.com/leonidas/transparency) と違い、
 `input:radio` の同一 name 属性グループ単位の checked 設定に対応。
 
-### サンプル
+### sample
 
 #### HTML
 
@@ -51,7 +51,7 @@ DOM 上のテンプレートに値を設定。
 		checkbox2: ["c1", "c3"]
 	});
 
-#### 結果
+#### result
 
 	<div id="direct-bind">
 		<span id="text1">root text</span>
@@ -80,7 +80,7 @@ tmplAppend
 指定要素内のテンプレートを `clone()` して子要素を追加する。戻り値として追加した要素を返す。
 値設定は内部で `tmplBind()` を使用するのでそちらを参照。
 
-### サンプル
+### sample
 
 #### HTML
 
@@ -93,7 +93,7 @@ tmplAppend
 	$("#clone-list").tmplAppend({clone1: "clone11"}).css({color: "red"});
 	$("#clone-list").tmplAppend({clone1: "clone12"}).css({color: "blue"});
 
-#### 結果
+#### result
 
 	<ol id="clone-list">
 		<li class="clone1">clone11</li>
@@ -110,7 +110,7 @@ tmplSelectOpts
 * select タグ内の option タグ
 * input タグ (radio, checkbox を想定) 及び対応する label タグ
 
-### サンプル
+### sample
 
 #### HTML
 
@@ -133,7 +133,7 @@ tmplSelectOpts
 		{value: "r2", text: "radio12"}
 	]);
 
-#### 結果
+#### result
 
 	<select name="select1">
 		<option value=""></option>
@@ -149,7 +149,7 @@ tmplList
 --------------------
 一覧を一括設定。値設定は内部で `tmplBind()` を使用するのでそちらを参照。
 
-### サンプル
+### sample
 
 #### HTML
 
@@ -164,7 +164,7 @@ tmplList
 		{list1: "list12"}
 	]);
 
-#### 結果
+#### result
 
 	<ol id="direct-list">
 		<li class="list1">list11</li>
