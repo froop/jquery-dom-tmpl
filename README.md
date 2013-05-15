@@ -29,21 +29,18 @@ DOM 上のテンプレートを clone して値を設定。値設定は内部で
 
 tmplSelectOpts
 --------------------
-select タグ内の option タグを配列から動的に作成。引数は value, text を持つオブジェクトの配列。
+内部値と表示文字列を組み合わせた選択肢項目を配列から動的に作成。
+引数はプロパティに value, text を持つオブジェクトの配列。
+
+テンプレートは下記に対応する。
+
+* select タグ内の option タグ
+* input タグ (:radio, :checkbox を想定) 及び対応する label タグ
 
 	$("select[name=select1]").tmplSelectOpts([
 		{value: "", text: ""},
 		{value: "1", text: "select1"},
 		{value: "2", text: "select2"}
-	]);
-
-tmplRadios
---------------------
-input:radio 及び対応する label を配列から動的に作成。引数は value, text を持つオブジェクトの配列。
-
-	$("#radios").tmplRadios([
-		{value: "1", text: "radio1"},
-		{value: "2", text: "radio2"}
 	]);
 
 tmplList

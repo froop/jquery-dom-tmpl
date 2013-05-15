@@ -79,26 +79,18 @@
 	};
 
 	/**
-	 * Clone <option> and bind array of data to <select>.
+	 * Clone and bind array of value-text to DOM.
 	 * @param {Array} dataList List of JSON object (value, text)
 	 */
 	$.fn.tmplSelectOpts = function (dataList) {
 		var $elements = this;
 		renderList($elements, dataList, function ($item, data) {
-			$item.val(data.value).text(data.text);
-		});
-		return this;
-	};
-
-	/**
-	 * Clone <input type="radio"> and bind array of data to DOM.
-	 * @param {Array} dataList List of JSON object (value, text)
-	 */
-	$.fn.tmplRadios = function (dataList) {
-		var $elements = this;
-		renderList($elements, dataList, function ($item, data) {
-			$item.find(":radio").val(data.value);
-			$item.find("label").text(data.text);
+			if ($item.is("option")) {
+				$item.val(data.value).text(data.text);
+			} else {
+				$item.find("input").val(data.value);
+				$item.find("label").text(data.text);
+			}
 		});
 		return this;
 	};
