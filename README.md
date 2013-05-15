@@ -10,7 +10,7 @@ tmplBind
 --------------------
 DOM 上のテンプレートに値を設定。
 [Transparency](https://github.com/leonidas/transparency) と違い、
-`input:radio` の同一 name 属性グループ単位の checked 設定に対応。
+`input:radio` や `input:checkbox` に対する、同一 name 単位の checked 設定に対応。
 
 ### sample
 
