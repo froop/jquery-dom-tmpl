@@ -77,11 +77,18 @@
 				return [selId, selClass, selName].join(",");
 			}
 
-			var selector = setting.selector[name];
-			var attr = setting.attr[name];
-			var prop = setting.prop[name];
-			var $target = $elements.find(selector || defaultSelector());
+			function callIfFunction(target) {
+				if (typeof target === "function") {
+					return target($elements);
+				} else {
+					return target;
+				}
+			}
 
+			var selector = callIfFunction(setting.selector[name]);
+			var attr = callIfFunction(setting.attr[name]);
+			var prop = callIfFunction(setting.prop[name]);
+			var $target = $elements.find(selector || defaultSelector());
 			if (attr) {
 				$target.attr(attr, value);
 			} else if (prop) {
@@ -125,12 +132,22 @@
 	 */
 	$.fn.tmplSelectOpts = function (dataList) {
 		var $elements = this;
-		renderList($elements, dataList, function ($item, data) {
-			if ($item.is("option")) {
-				$item.val(data.value).text(data.text);
-			} else {
-				$item.find("input").val(data.value);
-				$item.find("label").text(data.text);
+		function isSelect($elem) {
+			return $elem.find("option").length > 0;
+		}
+		renderList($elements, dataList, bindItem, {
+			selector: {
+				value: function ($elem) {
+					return isSelect($elem) ? "option" : "input";
+				},
+				text: function ($elem) {
+					return isSelect($elem) ? "option" : "label";
+				}
+			},
+			attr: {
+				value: function ($elem) {
+					return "value";
+				}
 			}
 		});
 		return this;
