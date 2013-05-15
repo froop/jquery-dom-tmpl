@@ -65,7 +65,7 @@
 			var selId = "#" + name;
 			var selClass = "." + name;
 			var selName = "[name=" + name + "]";
-			var selector = selId + "," + selClass + "," + selName;
+			var selector = [selId, selClass, selName].join(",");
 			setValue($elements.find(selector), data[name]);
 		});
 		return this;
