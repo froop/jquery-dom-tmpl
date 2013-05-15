@@ -123,9 +123,7 @@
 			var $tmpl = setupListTmpl($elem);
 			$elem.empty();
 			$.each(dataList, function () {
-				var $item = $tmpl.clone();
-				bindItem($item, this, options);
-				$elem.append($item);
+				$tmpl.tmplClone(this, options).appendTo($elem);
 			});
 		});
 		return this;
