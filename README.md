@@ -9,7 +9,8 @@ HTML テンプレートを DOM で用意して DOM のまま操作する jQuery 
 tmplBind
 --------------------
 DOM 上のテンプレートに値を設定。
-Transparency と違い、`input:radio` の同一 name 属性グループ単位の checked 設定に対応。
+[Transparency](https://github.com/leonidas/transparency) と違い、
+`input:radio` の同一 name 属性グループ単位の checked 設定に対応。
 
 	<div id="direct-bind">
 		<span id="text1"></span>
