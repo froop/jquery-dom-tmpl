@@ -63,7 +63,8 @@
 	$.fn.tmplBind = function (data, options) {
 		var $elements = this;
 		var defaults = {
-				selector : {}
+				selector: {},
+				attr: {}
 		};
 		var setting = $.extend(defaults, options);
 
@@ -74,9 +75,8 @@
 				var selName = "[name=" + name + "]";
 				return [selId, selClass, selName].join(",");
 			}
-			var path = setting.selector[name];
-			var selector = path ? path.split("@")[0] : "";
-			var attr = path ? path.split("@")[1] : "";
+			var selector = setting.selector[name];
+			var attr = setting.attr[name];
 			var $target = $elements.find(selector || defaultSelector());
 			if (attr) {
 				$target.attr(attr, value);
