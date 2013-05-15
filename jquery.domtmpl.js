@@ -49,7 +49,7 @@
 	$.fn.tmplBind = function (data, options) {
 		var $elements = this;
 		var defaults = {
-				selector: {},
+				find: {},
 				attr: {},
 				prop: {}
 		};
@@ -64,16 +64,16 @@
 		}
 
 		$.each(data, function (name, value) {
-			function defaultSelector() {
+			function defaultFind() {
 				var selId = "#" + name;
 				var selClass = "." + name;
 				var selName = "[name=" + name + "]";
 				return [selId, selClass, selName].join(",");
 			}
-			var selector = callIfFunction(setting.selector[name]);
+			var find = callIfFunction(setting.find[name]);
 			var attr = callIfFunction(setting.attr[name]);
 			var prop = callIfFunction(setting.prop[name]);
-			var $target = $elements.find(selector || defaultSelector());
+			var $target = $elements.find(find || defaultFind());
 
 			if (attr) {
 				$target.attr(attr, value);
@@ -142,7 +142,7 @@
 			return $elem.find("option").length > 0;
 		}
 		$elements.tmplList(dataList, {
-			selector: {
+			find: {
 				value: function ($elem) {
 					return isSelect($elem) ? "option" : "input";
 				},
