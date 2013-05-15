@@ -74,9 +74,15 @@
 				var selName = "[name=" + name + "]";
 				return [selId, selClass, selName].join(",");
 			}
-			var selector = setting.selector[name] || defaultSelector();
-console.log(selector);
-			setValue($elements.find(selector), value);
+			var path = setting.selector[name];
+			var selector = path ? path.split("@")[0] : "";
+			var attr = path ? path.split("@")[1] : "";
+			var $target = $elements.find(selector || defaultSelector());
+			if (attr) {
+				$target.attr(attr, value);
+			} else {
+				setValue($target, value);
+			}
 		});
 		return this;
 	};

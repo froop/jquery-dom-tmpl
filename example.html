@@ -22,8 +22,9 @@
 		<div id="checks">
 			<span><input name="checkbox2" type="checkbox"><label></label></span>
 		</div>
-		<div id="custom1"></div>
-		<div id="custom2"></div>
+		<div id="custom11"></div>
+		<div id="custom12"></div>
+		<div id="custom2"><label></label><input></div>
 	</div>
 
 	<ol id="clone-list">
@@ -62,10 +63,16 @@
 		select1: "s1",
 		radio1: "r1",
 		checkbox2: ["c1", "c3"],
-		alternate1: "alternate1"
+		alternate1: "alt1",
+		alternate21: "alt21",
+		alternate22: "alt22",
+		alternate23: true
 	}, {
 		selector: {
-			alternate1: "#custom1,#custom2"
+			alternate1: "#custom11,#custom12",
+			alternate21: "#custom2 > label",
+			alternate22: "#custom2 > input",
+			alternate23: "#custom2 > input@disabled"
 		}
 	});
 
