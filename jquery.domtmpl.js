@@ -61,12 +61,12 @@
 	 */
 	$.fn.tmplBind = function (data) {
 		var $elements = this;
-		$.each(data, function (name) {
+		$.each(data, function (name, value) {
 			var selId = "#" + name;
 			var selClass = "." + name;
 			var selName = "[name=" + name + "]";
 			var selector = [selId, selClass, selName].join(",");
-			setValue($elements.find(selector), data[name]);
+			setValue($elements.find(selector), value);
 		});
 		return this;
 	};
