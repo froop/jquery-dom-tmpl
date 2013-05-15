@@ -118,23 +118,16 @@
 	 * @returns {jQuery} for method chain
 	 */
 	$.fn.tmplList = function (dataList, options) {
-		var $elements = this;
-
-		function renderList($elements, data, options) {
-			$elements.each(function () {
-				var $elem = $(this);
-				var $tmpl = setupListTmpl($elem);
-
-				$elem.empty();
-				$.each(data, function () {
-					var $item = $tmpl.clone();
-					bindItem($item, this, options);
-					$elem.append($item);
-				});
+		this.each(function () {
+			var $elem = $(this);
+			var $tmpl = setupListTmpl($elem);
+			$elem.empty();
+			$.each(dataList, function () {
+				var $item = $tmpl.clone();
+				bindItem($item, this, options);
+				$elem.append($item);
 			});
-		}
-
-		renderList($elements, dataList, options);
+		});
 		return this;
 	};
 
