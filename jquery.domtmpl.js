@@ -31,6 +31,15 @@
 		return $tmpl;
 	}
 
+	function bindItem($elements, data, options) {
+		function wrap$() {
+			return $elements
+					.wrapAll("<div class='wrapper'>")
+					.closest(".wrapper");
+		}
+		wrap$().tmplBind(data, options);
+	}
+
 	function renderList($elements, data, options) {
 		$elements.each(function () {
 			var $elem = $(this);
@@ -43,15 +52,6 @@
 				$elem.append($item);
 			});
 		});
-	}
-
-	function bindItem($elements, data, options) {
-		function wrap$() {
-			return $elements
-					.wrapAll("<div class='wrapper'>")
-					.closest(".wrapper");
-		}
-		wrap$().tmplBind(data, options);
 	}
 
 	/**
