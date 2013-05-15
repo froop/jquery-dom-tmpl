@@ -31,7 +31,7 @@
 		return $tmpl;
 	}
 
-	function renderList($elements, data, renderItem, options) {
+	function renderList($elements, data, options) {
 		$elements.each(function () {
 			var $elem = $(this);
 			var $tmpl = setupListTmpl($elem);
@@ -39,7 +39,7 @@
 			$elem.empty();
 			$.each(data, function () {
 				var $item = $tmpl.clone();
-				renderItem($item, this, options);
+				bindItem($item, this, options);
 				$elem.append($item);
 			});
 		});
@@ -133,7 +133,7 @@
 	 */
 	$.fn.tmplList = function (dataList, options) {
 		var $elements = this;
-		renderList($elements, dataList, bindItem, options);
+		renderList($elements, dataList, options);
 		return this;
 	};
 
