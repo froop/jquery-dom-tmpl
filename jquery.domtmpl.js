@@ -89,7 +89,7 @@
 	};
 
 	/**
-	 * Clone select option (or :radio, :checkbox) and bind array of value-text.
+	 * Bind array of value-text to select options (or :radio, :checkbox).
 	 * @param {Array} dataList List of JSON object (value, text)
 	 */
 	$.fn.tmplSelectOpts = function (dataList) {
@@ -106,7 +106,7 @@
 	};
 
 	/**
-	 * Clone and bind array of data to DOM.
+	 * Bind array of data to list items.
 	 * @param {Array} dataList List of JSON object
 	 */
 	$.fn.tmplList = function (dataList) {
