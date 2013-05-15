@@ -37,10 +37,21 @@ tmplSelectOpts
 * select タグ内の option タグ
 * input タグ (:radio, :checkbox を想定) 及び対応する label タグ
 
+	<select name="select1">
+		<option></option>
+	</select>
+	<span id="radios">
+		<span><input name="radio1" type="radio"><label></label></span>
+	</span>
+
 	$("select[name=select1]").tmplSelectOpts([
 		{value: "", text: ""},
-		{value: "1", text: "select1"},
-		{value: "2", text: "select2"}
+		{value: "o1", text: "option1"},
+		{value: "o2", text: "option2"}
+	]);
+	$("#radios").tmplSelectOpts([
+		{value: "r1", text: "radio1"},
+		{value: "r2", text: "radio2"}
 	]);
 
 tmplList

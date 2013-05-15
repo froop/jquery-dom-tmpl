@@ -41,12 +41,12 @@
 <script>
 	$("select[name=select1]").tmplSelectOpts([
 		{value: "", text: ""},
-		{value: "11", text: "select11"},
-		{value: "12", text: "select12"}
+		{value: "o1", text: "option1"},
+		{value: "o2", text: "option2"}
 	]);
 	$("#radios").tmplSelectOpts([
-		{value: "1", text: "r1"},
-		{value: "2", text: "r2"}
+		{value: "r1", text: "radio1"},
+		{value: "r2", text: "radio2"}
 	]);
 
 	$("#direct-bind").tmplBind({
@@ -55,8 +55,8 @@
 		input1: "input text",
 		input2: 123,
 		checkbox1: true,
-		radio1: "1",
-		select1: "11"
+		select1: "o1",
+		radio1: "r1"
 	});
 
 	$.each([
