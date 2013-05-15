@@ -24,7 +24,11 @@
 		</div>
 		<div id="custom11"></div>
 		<div id="custom12"></div>
-		<div id="custom2"><label></label><input name="custom21"></div>
+		<div id="custom2">
+			<label></label>
+			<input name="custom21">
+			<a id="custom22">link</a>
+		</div>
 	</div>
 
 	<ol id="clone-list">
@@ -66,7 +70,8 @@
 		alternate1: "alt1",
 		alternate21: "alt21",
 		alternate22: "alt22",
-		custom21: true
+		custom21: true,
+		custom22: "http://google.co.jp/"
 	}, {
 		selector: {
 			alternate1: "#custom11,#custom12",
@@ -75,7 +80,8 @@
 			alternate23: "#custom2 > input"
 		},
 		attr: {
-			custom21: "disabled"
+			custom21: "disabled",
+			custom22: "href"
 		}
 	});
 
