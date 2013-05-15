@@ -40,10 +40,13 @@
 		});
 	}
 
-	function wrap$($elems) {
-		return $elems
-				.wrapAll("<div class='wrapper'>")
-				.closest(".wrapper");
+	function bindItem($elements, data) {
+		function wrap$() {
+			return $elements
+					.wrapAll("<div class='wrapper'>")
+					.closest(".wrapper");
+		}
+		wrap$().tmplBind(data);
 	}
 
 	/**
@@ -73,13 +76,13 @@
 	 * @param {Object} data JSON object
 	 */
 	$.fn.tmplClone = function (data) {
-		var $wrapper = wrap$(this.clone());
-		$wrapper.tmplBind(data);
-		return $wrapper.children();
+		var $item = this.clone();
+		bindItem($item, data);
+		return $item;
 	};
 
 	/**
-	 * Clone and bind array of value-text to DOM.
+	 * Clone select option (or :radio, :checkbox) and bind array of value-text.
 	 * @param {Array} dataList List of JSON object (value, text)
 	 */
 	$.fn.tmplSelectOpts = function (dataList) {
@@ -101,9 +104,7 @@
 	 */
 	$.fn.tmplList = function (dataList) {
 		var $elements = this;
-		renderList($elements, dataList, function ($item, data) {
-			wrap$($item).tmplBind(data);
-		});
+		renderList($elements, dataList, bindItem);
 		return this;
 	};
 })(jQuery);
