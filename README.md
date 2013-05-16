@@ -8,9 +8,32 @@ HTML テンプレートを DOM で用意して DOM のまま操作する jQuery 
 
 tmplBind
 --------------------
-DOM 上のテンプレートに値を設定。
-[Transparency](https://github.com/leonidas/transparency) と違い、
-`input:radio` や `input:checkbox` に対する、同一 name 単位の checked 設定に対応。
+DOM 上のテンプレートに値を設定する。
+
+### DOM 要素の選択方法
+属性 id, class, name のいずれかが合致する DOM 要素が対象。
+
+### 値の設定方法
+デフォルトの場合。attr/prop オプションで変更可能。
+
+* checkbox, radio: `jQuery#prop("checked")`
+* 上記以外の input, select タグ: `jQuery#val()`
+* 上記以外のタグ: `jQuery#text()`
+
+
+### options
+
+#### find
+DOM 要素の選択方法を変更する。`jQuery#find()` に使われるセレクターを指定する。
+
+#### attr
+値の設定先の属性を変更する。`jQuery#attr()` に使われる属性名を指定する。
+prop オプションと一緒には使用できない。
+
+#### prop
+値の設定先のプロパティーを変更する。`jQuery#prop()` に使われるプロパティー名を指定する。
+attr オプションと一緒には使用できない。
+
 
 ### sample
 
@@ -144,6 +167,7 @@ tmplSelectOpts
 
 #### emptyText
 canEmpty プロパティが `true` の場合の表示文字列。デフォルトは空文字列 (`""`)。
+
 
 ### sample
 
