@@ -47,6 +47,7 @@
 	 * @returns {jQuery} for method chain
 	 */
 	$.fn.tmplBind = function (data, options) {
+		data = data || {};
 		var $elements = this;
 		var defaults = {
 			find: {},
@@ -63,7 +64,7 @@
 			}
 		}
 
-		$.each(data || {}, function (name, value) {
+		$.each(data, function (name, value) {
 			function defaultFind() {
 				var selId = "#" + name;
 				var selClass = "." + name;
@@ -149,6 +150,7 @@
 	 * @returns {jQuery} for method chain
 	 */
 	$.fn.tmplSelectOpts = function (dataList, options) {
+		dataList = dataList || [];
 		var $elements = this;
 		var defaults = {
 			canEmpty: false,
@@ -159,7 +161,6 @@
 			return $elem.find("option").length > 0;
 		}
 
-		dataList = dataList || [];
 		if (setting.canEmpty) {
 			dataList.unshift({
 				value: "",
