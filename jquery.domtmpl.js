@@ -130,6 +130,7 @@
 	 * @returns {jQuery} for method chain
 	 */
 	$.fn.tmplList = function (dataList, options) {
+		dataList = dataList || [];
 		this.each(function () {
 			var $elem = $(this);
 			setupListTmpl($elem);
@@ -158,6 +159,7 @@
 			return $elem.find("option").length > 0;
 		}
 
+		dataList = dataList || [];
 		if (setting.canEmpty) {
 			dataList.unshift({
 				value: "",
