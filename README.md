@@ -137,6 +137,14 @@ tmplSelectOpts
 * select タグ内の option タグ
 * input タグ (radio, checkbox を想定) 及び対応する label タグ
 
+### options
+
+#### canEmpty
+先頭に空の選択肢を追加するなら `true`。デフォルトは `false`。
+
+#### emptyText
+canEmpty プロパティが `true` の場合の表示文字列。デフォルトは空文字列 (`""`)。
+
 ### sample
 
 #### HTML
@@ -151,14 +159,18 @@ tmplSelectOpts
 #### JavaScript
 
 	$("select[name=select1]").tmplSelectOpts([
-		{value: "", text: ""},
-		{value: "o1", text: "select11"},
-		{value: "o2", text: "select12"}
-	]);
+		{value: "s1", text: "select11"},
+		{value: "s2", text: "select12"}
+	], {
+		canEmpty: true
+	});
 	$("#radios").tmplSelectOpts([
 		{value: "r1", text: "radio11"},
 		{value: "r2", text: "radio12"}
-	]);
+	], {
+		canEmpty: true,
+		emptyText: "none"
+	});
 
 #### result
 
@@ -168,6 +180,7 @@ tmplSelectOpts
 		<option value="s2">select2</option>
 	</select>
 	<span id="radios">
+		<span><input name="radio1" type="radio" value=""><label>none</label></span>
 		<span><input name="radio1" type="radio" value="r1"><label>radio1</label></span>
 		<span><input name="radio1" type="radio" value="r2"><label>radio2</label></span>
 	</span>
