@@ -63,7 +63,7 @@
 			}
 		}
 
-		$.each(data, function (name, value) {
+		$.each(data || {}, function (name, value) {
 			function defaultFind() {
 				var selId = "#" + name;
 				var selClass = "." + name;
