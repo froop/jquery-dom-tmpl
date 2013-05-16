@@ -99,16 +99,27 @@
 	};
 
 	/**
+	 * Clone list item and bind data.
+	 * @param {Object} data JSON object
+	 * @param {Object} options
+	 * @returns {jQuery} appended item
+	 */
+	$.fn.tmplItem = function (data, options) {
+		var $list = this;
+		var $tmpl = setupListTmpl($list);
+		return $tmpl.tmplClone(data, options);
+	};
+
+	/**
 	 * Append list item and bind data.
 	 * @param {Object} data JSON object
 	 * @param {Object} options
 	 * @returns {jQuery} appended item
 	 */
 	$.fn.tmplAppend = function (data, options) {
-		var $elem = this;
-		var $tmpl = setupListTmpl($elem);
-		var $item = $tmpl.tmplClone(data, options);
-		$elem.append($item);
+		var $list = this;
+		var $item = $list.tmplItem(data, options);
+		$list.append($item);
 		return $item;
 	};
 
