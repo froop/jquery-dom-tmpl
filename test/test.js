@@ -3,8 +3,7 @@
 
 	module("domtmpl", {
 		setup: function () {
-//			$("#qunit-fixture").append(
-//					$("<div>").html(html).find("#example"));
+			$("#qunit-fixture").load("example.html #example");
 		}
 	});
 
