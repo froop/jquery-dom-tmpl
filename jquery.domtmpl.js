@@ -11,14 +11,14 @@
 	"use strict";
 
 	function setValue($fields, value) {
-		$fields.filter("input,select").not(":checkbox,:radio").val(value);
+		$fields.filter("input,select,textarea").not(":checkbox,:radio").val(value);
 		if (typeof value === "boolean") {
 			$fields.filter(":checkbox,:radio").prop("checked", value);
 		} else {
 			$fields.filter(":checkbox").val(value);
 			$fields.filter(":radio").val([value]);
 		}
-		$fields.not("input,select").text(value);
+		$fields.not("input,select,textarea").text(value);
 	}
 
 	function setupListTmpl($elem) {
