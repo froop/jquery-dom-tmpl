@@ -132,11 +132,10 @@
 	$.fn.tmplList = function (dataList, options) {
 		this.each(function () {
 			var $elem = $(this);
-			var $tmpl = setupListTmpl($elem);
+			setupListTmpl($elem);
 			$elem.empty();
 			$.each(dataList, function () {
-				//TODO $elem.tmplAppend(this, options);
-				$tmpl.tmplClone(this, options).appendTo($elem);
+				$elem.tmplAppend(this, options);
 			});
 		});
 		return this;
