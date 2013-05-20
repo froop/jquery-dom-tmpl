@@ -11,10 +11,10 @@ tmplBind
 DOM 上のテンプレートに値を設定する。
 
 ### DOM 要素の選択方法
-属性 id, class, name のいずれかが合致する DOM 要素が対象。
+属性 id, class, name のいずれかが合致する要素が対象。オプション find で変更可能。
 
 ### 値の設定方法
-デフォルトの場合。attr/prop オプションで変更可能。
+下記はデフォルトの場合。attr/prop オプションで変更可能。
 
 * checkbox, radio: `jQuery#prop("checked")`
 * 上記以外の input, select タグ: `jQuery#val()`
@@ -36,94 +36,70 @@ attr オプションと一緒には使用できない。
 
 
 ### sample
+他の例は example.html を参照。
 
 #### HTML
 
-	<div id="direct-bind">
+	<div id="example1">
 		<div id="text1"></div>
-		<div><span id="text2"></span></div>
-		<input name="input1">
-		<input name="input2">
-		<input name="checkbox1" type="checkbox" value="1">
+		<div>
+			<label class="text2"></label>
+			<input name="input1">
+		</div>
 		<select name="select1">
 			<option value=""></option>
 			<option value="s1">select1</option>
 			<option value="s2">select2</option>
 		</select>
-		<div id="radios">
-			<span><input name="radio1" type="radio" value="r1"><label>radio1</label></span>
-			<span><input name="radio1" type="radio" value="r2"><label>radio2</label></span>
-		</div>
-		<div id="checks">
-			<span><input name="checkbox2" type="checkbox" value="c1"><label>check1</label></span>
-			<span><input name="checkbox2" type="checkbox" value="c2"><label>check2</label></span>
-			<span><input name="checkbox2" type="checkbox" value="c3"><label>check3</label></span>
-		</div>
-		<div><label id="custom11"></label><input name="custom12"></div>
-		<div id="custom2">
-			<a id="custom21"></a>
-			<input name="custom22">
+		<div id="find1"><input></div>
+		<div>
+			<a id="attr1">link</a>
+			<input name="prop1">
 		</div>
 	</div>
 
 #### JavaScript
 
-	$("#direct-bind").tmplBind({
-		text1: "root text",
-		text2: "nested text",
-		input1: "input text",
-		input2: 123,
-		checkbox1: true,
+	$("#example1").tmplBind({
+		text1: "by id",
+		text2: "by class",
+		input1: "by name",
 		select1: "s1",
-		radio1: "r1",
-		checkbox2: ["c1", "c3"],
-		alternate1: "alt1",
-		alternate21: "alt21",
-		alternate22: "alt22",
-		custom21: "http://google.co.jp/",
-		custom22: true
+		alias1: "alias find",
+		attr1: "http://example.com/",
+		prop1: true
 	}, {
 		find: {
-			alternate1: "#custom11,[name=custom12]",
-			alternate21: "#custom21",
-			alternate22: "#custom2 > input"
+			alias1: "#find1 > input"
 		},
 		attr: {
-			custom21: "href"
+			attr1: "href"
 		},
 		prop: {
-			custom22: "disabled"
+			prop1: "disabled"
 		}
 	});
 
 #### result
 
-	<div id="direct-bind">
-		<div id="text1">root text</div>
-		<div><span id="text2">nested text</span></div>
-		<input name="input1" value="input text">
-		<input name="input2" value="123">
-		<input name="checkbox1" type="checkbox" value="1" checked>
+	<div id="example1">
+		<div id="text1">by id</div>
+		<div>
+			<label class="text2">by class</label>
+			<input name="input1" value="by name">
+		</div>
 		<select name="select1">
 			<option value=""></option>
 			<option value="s1" selected>select1</option>
 			<option value="s2">select2</option>
 		</select>
-		<div id="radios">
-			<span><input name="radio1" type="radio" value="r1" checked><label>radio1</label></span>
-			<span><input name="radio1" type="radio" value="r2"><label>radio2</label></span>
-		</div>
-		<div id="checks">
-			<span><input name="checkbox2" type="checkbox" value="c1" checked><label>check1</label></span>
-			<span><input name="checkbox2" type="checkbox" value="c2"><label>check2</label></span>
-			<span><input name="checkbox2" type="checkbox" value="c3" checked><label>check3</label></span>
-		</div>
-		<div><label id="custom11">alt1</label><input name="custom12" value="alt1"></div>
-		<div id="custom2">
-			<a id="custom21" href="http://google.co.jp/">alt21</a>
-			<input name="custom22" value="alt22" disabled>
+		<div id="find1"><input value="alias find"></div>
+		<div>
+			<a id="attr1" href="http://example.com/">link</a>
+			<input name="prop1" disabled>
 		</div>
 	</div>
+
 
 tmplAppend
 --------------------
@@ -149,6 +125,7 @@ tmplAppend
 		<li class="clone1">clone11</li>
 		<li class="clone1">clone12</li>
 	</ol>
+
 
 tmplSelectOpts
 --------------------
@@ -208,6 +185,7 @@ canEmpty プロパティが `true` の場合の表示文字列。デフォルト
 		<span><input name="radio1" type="radio" value="r1"><label>radio1</label></span>
 		<span><input name="radio1" type="radio" value="r2"><label>radio2</label></span>
 	</span>
+
 
 tmplList
 --------------------
