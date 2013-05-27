@@ -50,7 +50,19 @@
 		}
 	});
 
-	console.log($("#direct-bind").tmplFormToJSON());
+	console.log($("#direct-bind").tmplUnbind({
+		text1: null,
+		input1: null,
+//TODO
+//		radio1: null,
+//		checkbox2: null,
+		textarea1: null,
+		select1: null,
+		alternate1: "#custom11",
+		nest1: {
+			nest11: null
+		}
+	}));
 
 	$("#clone-list").tmplAppend({clone1: "clone11"}).css({color: "red"});
 	$("#clone-list").tmplAppend({clone1: "clone12"}).css({color: "blue"});

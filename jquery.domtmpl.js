@@ -40,9 +40,11 @@
 		wrap$().tmplBind(data, options);
 	}
 
-	function callIfFunction(target, $elements) {
-		if (typeof target === "function") {
-			return target($elements);
+	function callIfFunction(target, argument) {
+		if ($.isPlainObject(target)) {
+			return null;
+		} else if (typeof target === "function") {
+			return target(argument);
 		} else {
 			return target;
 		}
@@ -75,17 +77,17 @@
 			var find = callIfFunction(setting.find[name], $elements);
 			var attr = callIfFunction(setting.attr[name], $elements);
 			var prop = callIfFunction(setting.prop[name], $elements);
-			var $target = $elements.find(find || defaultFind(name));
+			var $targets = $elements.find(find || defaultFind(name));
 
 			if (attr) {
-				$target.attr(attr, value);
+				$targets.attr(attr, value);
 			} else if (prop) {
-				$target.prop(prop, value);
+				$targets.prop(prop, value);
 			} else {
 				if ($.isPlainObject(value)) {
-					$target.tmplBind(value, options);
+					$targets.tmplBind(value, options);
 				} else {
-					setValue($target, value);
+					setValue($targets, value);
 				}
 			}
 		});
@@ -191,14 +193,27 @@
 	};
 
 	/**
-	 * for form element.
+	 * @param {Object} template of JSON
 	 * @returns {Object} JSON
 	 */
-	$.fn.tmplFormToJSON = function () {
+	$.fn.tmplUnbind = function (template) {
 		var $elements = this;
 		var ret = {};
-		$.each($elements.serializeArray(), function(i, v) {
-			ret[v.name] = v.value;
+
+		$.each(template, function (name, value) {
+			var find = callIfFunction(template[name], $elements);
+			var $targets = $elements.find(find || defaultFind(name));
+
+			if ($.isPlainObject(value)) {
+				ret[name] = $targets.tmplUnbind(value);
+			} else {
+				//TODO checkbox, radio
+				if ($targets.is("input,select,textarea")) {
+					ret[name] = $targets.val();
+				} else {
+					ret[name] = $targets.text();
+				}
+			}
 		});
 		return ret;
 	};
