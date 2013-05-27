@@ -81,7 +81,7 @@
 			} else if (prop) {
 				$target.prop(prop, value);
 			} else {
-				if (typeof value === "object") {
+				if ($.isPlainObject(value)) {
 					$target.tmplBind(value, options);
 				} else {
 					setValue($target, value);
