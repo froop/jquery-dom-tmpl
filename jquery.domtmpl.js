@@ -84,17 +84,19 @@
 
 		$.each(data, function (name, value) {
 			var find = callIfFunction(setting.find[name], $elements);
-			var attr = callIfFunction(setting.attr[name], $elements);
-			var prop = callIfFunction(setting.prop[name], $elements);
 			var $targets = $elements.find(find || defaultFind(name));
+			var attr;
+			var prop;
 
-			if (attr) {
-				$targets.attr(attr, value);
-			} else if (prop) {
-				$targets.prop(prop, value);
+			if ($.isPlainObject(value)) {
+				$targets.tmplBind(value, options);
 			} else {
-				if ($.isPlainObject(value)) {
-					$targets.tmplBind(value, options);
+				attr = callIfFunction(setting.attr[name], $elements);
+				prop = callIfFunction(setting.prop[name], $elements);
+				if (attr) {
+					$targets.attr(attr, value);
+				} else if (prop) {
+					$targets.prop(prop, value);
 				} else {
 					setValue($targets, value);
 				}
