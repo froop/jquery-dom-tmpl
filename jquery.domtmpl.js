@@ -40,6 +40,21 @@
 		wrap$().tmplBind(data, options);
 	}
 
+	function callIfFunction(target, $elements) {
+		if (typeof target === "function") {
+			return target($elements);
+		} else {
+			return target;
+		}
+	}
+
+	function defaultFind(name) {
+		var selId = "#" + name;
+		var selClass = "." + name;
+		var selName = "[name=" + name + "]";
+		return [selId, selClass, selName].join(",");
+	}
+
 	/**
 	 * Bind data to DOM.
 	 * @param {Object} data JSON object
@@ -56,25 +71,11 @@
 		};
 		var setting = $.extend(defaults, options);
 
-		function callIfFunction(target) {
-			if (typeof target === "function") {
-				return target($elements);
-			} else {
-				return target;
-			}
-		}
-
 		$.each(data, function (name, value) {
-			function defaultFind() {
-				var selId = "#" + name;
-				var selClass = "." + name;
-				var selName = "[name=" + name + "]";
-				return [selId, selClass, selName].join(",");
-			}
-			var find = callIfFunction(setting.find[name]);
-			var attr = callIfFunction(setting.attr[name]);
-			var prop = callIfFunction(setting.prop[name]);
-			var $target = $elements.find(find || defaultFind());
+			var find = callIfFunction(setting.find[name], $elements);
+			var attr = callIfFunction(setting.attr[name], $elements);
+			var prop = callIfFunction(setting.prop[name], $elements);
+			var $target = $elements.find(find || defaultFind(name));
 
 			if (attr) {
 				$target.attr(attr, value);
