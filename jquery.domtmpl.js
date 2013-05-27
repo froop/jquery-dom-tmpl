@@ -66,6 +66,11 @@
 		return [selId, selClass, selName].join(",");
 	}
 
+	function find$ByName($elements, name, selector) {
+		selector = callIfFunction(selector, $elements);
+		return $elements.find(selector || defaultFind(name));
+	}
+
 	/**
 	 * Bind data to DOM.
 	 * @param {Object} data JSON object
@@ -95,9 +100,7 @@
 		}
 
 		$.each(data, function (name, value) {
-			var find = callIfFunction(setting.find[name], $elements);
-			var $targets = $elements.find(find || defaultFind(name));
-
+			var $targets = find$ByName($elements, name, setting.find[name]);
 			if ($.isPlainObject(value)) {
 				$targets.tmplBind(value, options);
 			} else {
@@ -117,9 +120,7 @@
 		var ret = {};
 
 		$.each(template, function (name, value) {
-			var find = callIfFunction(template[name], $elements);
-			var $target = $elements.find(find || defaultFind(name));
-
+			var $target = find$ByName($elements, name, template[name]);
 			if ($.isPlainObject(value)) {
 				ret[name] = $target.tmplUnbind(value);
 			} else {
