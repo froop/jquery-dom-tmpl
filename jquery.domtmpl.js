@@ -43,7 +43,7 @@
 	function callIfFunction(target, argument) {
 		if ($.isPlainObject(target)) {
 			return null;
-		} else if (typeof target === "function") {
+		} else if ($.isFunction(target)) {
 			return target(argument);
 		} else {
 			return target;
