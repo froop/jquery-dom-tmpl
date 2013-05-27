@@ -104,6 +104,28 @@
 	};
 
 	/**
+	 * DOM to JSON.
+	 * @param {Object} template of JSON
+	 * @returns {Object} JSON
+	 */
+	$.fn.tmplUnbind = function (template) {
+		var $elements = this;
+		var ret = {};
+
+		$.each(template, function (name, value) {
+			var find = callIfFunction(template[name], $elements);
+			var $target = $elements.find(find || defaultFind(name));
+
+			if ($.isPlainObject(value)) {
+				ret[name] = $target.tmplUnbind(value);
+			} else {
+				ret[name] = getValue($target);
+			}
+		});
+		return ret;
+	};
+
+	/**
 	 * Clone and bind data to DOM.
 	 * @param {Object} data JSON object
 	 * @param {Object} options
@@ -199,26 +221,5 @@
 			}
 		});
 		return this;
-	};
-
-	/**
-	 * @param {Object} template of JSON
-	 * @returns {Object} JSON
-	 */
-	$.fn.tmplUnbind = function (template) {
-		var $elements = this;
-		var ret = {};
-
-		$.each(template, function (name, value) {
-			var find = callIfFunction(template[name], $elements);
-			var $target = $elements.find(find || defaultFind(name));
-
-			if ($.isPlainObject(value)) {
-				ret[name] = $target.tmplUnbind(value);
-			} else {
-				ret[name] = getValue($target);
-			}
-		});
-		return ret;
 	};
 })(jQuery);
