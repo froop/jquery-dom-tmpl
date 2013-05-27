@@ -81,7 +81,11 @@
 			} else if (prop) {
 				$target.prop(prop, value);
 			} else {
-				setValue($target, value);
+				if (typeof value === "object") {
+					$target.tmplBind(value, options);
+				} else {
+					setValue($target, value);
+				}
 			}
 		});
 		return this;

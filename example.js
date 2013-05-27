@@ -32,7 +32,10 @@
 		alternate21: "alt21",
 		alternate22: "alt22",
 		custom21: "http://google.co.jp/",
-		custom22: true
+		custom22: true,
+		nest1: {
+			nest11: "nested text"
+		}
 	}, {
 		find: {
 			alternate1: "#custom11,[name=custom12]",
