@@ -188,4 +188,17 @@
 		});
 		return this;
 	};
+
+	/**
+	 * for form element.
+	 * @returns {Object} JSON
+	 */
+	$.fn.tmplFormToJSON = function () {
+		var $elements = this;
+		var ret = {};
+		$.each($elements.serializeArray(), function(i, v) {
+			ret[v.name] = v.value;
+		});
+		return ret;
+	};
 })(jQuery);

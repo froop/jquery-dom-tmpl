@@ -50,6 +50,8 @@
 		}
 	});
 
+	console.log($("#direct-bind").tmplFormToJSON());
+
 	$("#clone-list").tmplAppend({clone1: "clone11"}).css({color: "red"});
 	$("#clone-list").tmplAppend({clone1: "clone12"}).css({color: "blue"});
 
