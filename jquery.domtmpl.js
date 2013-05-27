@@ -82,24 +82,26 @@
 		};
 		var setting = $.extend(defaults, options);
 
+		function bindValue($targets, name, value) {
+			var attr = callIfFunction(setting.attr[name], $elements);
+			var prop = callIfFunction(setting.prop[name], $elements);
+			if (attr) {
+				$targets.attr(attr, value);
+			} else if (prop) {
+				$targets.prop(prop, value);
+			} else {
+				setValue($targets, value);
+			}
+		}
+
 		$.each(data, function (name, value) {
 			var find = callIfFunction(setting.find[name], $elements);
 			var $targets = $elements.find(find || defaultFind(name));
-			var attr;
-			var prop;
 
 			if ($.isPlainObject(value)) {
 				$targets.tmplBind(value, options);
 			} else {
-				attr = callIfFunction(setting.attr[name], $elements);
-				prop = callIfFunction(setting.prop[name], $elements);
-				if (attr) {
-					$targets.attr(attr, value);
-				} else if (prop) {
-					$targets.prop(prop, value);
-				} else {
-					setValue($targets, value);
-				}
+				bindValue($targets, name, value);
 			}
 		});
 		return this;
