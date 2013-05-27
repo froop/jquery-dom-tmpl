@@ -24,6 +24,9 @@
 	function getValue($field) {
 		if ($field.is("input,select,textarea")) {
 			//TODO checkbox, radio
+//			if ($target.length > 1) {
+//				throw new Error("$target.length=" + $target.length);
+//			}
 			return $field.val();
 		} else {
 			return $field.text();
@@ -121,10 +124,6 @@
 
 		$.each(template, function (name, value) {
 			var $target = find$ByName($elements, name, template[name]);
-			if ($target.length > 1) {
-				throw new Error("$target.length=" + $target.length);
-			}
-
 			if ($.isPlainObject(value)) {
 				ret[name] = $target.tmplUnbind(value);
 			} else {
