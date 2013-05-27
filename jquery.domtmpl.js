@@ -21,6 +21,15 @@
 		$fields.not("input,select,textarea").text(value);
 	}
 
+	function getValue($field) {
+		if ($field.is("input,select,textarea")) {
+			//TODO checkbox, radio
+			return $field.val();
+		} else {
+			return $field.text();
+		}
+	}
+
 	function setupListTmpl($elem) {
 		var $tmpl = $elem.data("domtmpl");
 		if (!$tmpl) {
@@ -202,17 +211,12 @@
 
 		$.each(template, function (name, value) {
 			var find = callIfFunction(template[name], $elements);
-			var $targets = $elements.find(find || defaultFind(name));
+			var $target = $elements.find(find || defaultFind(name));
 
 			if ($.isPlainObject(value)) {
-				ret[name] = $targets.tmplUnbind(value);
+				ret[name] = $target.tmplUnbind(value);
 			} else {
-				//TODO checkbox, radio
-				if ($targets.is("input,select,textarea")) {
-					ret[name] = $targets.val();
-				} else {
-					ret[name] = $targets.text();
-				}
+				ret[name] = getValue($target);
 			}
 		});
 		return ret;
