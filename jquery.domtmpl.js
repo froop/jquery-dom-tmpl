@@ -86,7 +86,8 @@
 		var defaults = {
 			find: {},
 			attr: {},
-			prop: {}
+			prop: {},
+			error: false // if element not exists then throw error.
 		};
 		var setting = $.extend(defaults, options);
 
@@ -104,6 +105,10 @@
 
 		$.each(data, function (name, value) {
 			var $targets = find$ByName($elements, name, setting.find[name]);
+			if (setting.error && $targets.length === 0) {
+				throw new Error("tmplBind: not exists element [" + name + "]");
+			}
+
 			if ($.isPlainObject(value)) {
 				$targets.tmplBind(value, options);
 			} else {
@@ -116,14 +121,23 @@
 	/**
 	 * DOM to JSON.
 	 * @param {Object} template of JSON
+	 * @param {Object} options
 	 * @returns {Object} JSON
 	 */
-	$.fn.tmplUnbind = function (template) {
+	$.fn.tmplUnbind = function (template, options) {
 		var $elements = this;
+		var defaults = {
+			error: false // if element not exists then throw error.
+		};
+		var setting = $.extend(defaults, options);
 		var ret = {};
 
 		$.each(template, function (name, value) {
 			var $target = find$ByName($elements, name, template[name]);
+			if (setting.error && $target.length === 0) {
+				throw new Error("tmplUnbind: not exists element [" + name + "]");
+			}
+
 			if ($.isPlainObject(value)) {
 				ret[name] = $target.tmplUnbind(value);
 			} else {

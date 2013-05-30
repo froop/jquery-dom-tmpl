@@ -47,7 +47,8 @@
 		},
 		prop: {
 			custom22: "disabled"
-		}
+		},
+		error: true
 	});
 
 	console.log($("#direct-bind").tmplUnbind({
@@ -62,6 +63,8 @@
 		nest1: {
 			nest11: null
 		}
+	}, {
+		error: true
 	}));
 
 	$("#clone-list").tmplAppend({clone1: "clone11"}).css({color: "red"});
