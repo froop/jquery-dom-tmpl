@@ -22,7 +22,7 @@
 		text1: "root text",
 		text2: "nested text",
 		input1: "input text",
-		input2: 123,
+		input2: 1234,
 		checkbox1: true,
 		textarea1: "textarea11\ntextarea12",
 		select1: "s1",
@@ -48,6 +48,11 @@
 		prop: {
 			custom22: "disabled"
 		},
+		bind: {
+			input2: function ($elements, value) {
+				$elements.val(value + ".0");
+			}
+		},
 		error: true
 	});
 
@@ -67,6 +72,11 @@
 	}, {
 		find: {
 			alternate1: "[name=custom12]",
+		},
+		unbind: {
+			input2: function ($element, template) {
+				return parseInt($element.val());
+			}
 		},
 		error: true
 	})

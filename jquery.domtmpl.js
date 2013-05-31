@@ -97,6 +97,7 @@
 			find: {},
 			attr: {},
 			prop: {},
+			bind: {},
 			error: false // if element not exists then throw error.
 		};
 		var setting = $.extend(defaults, options);
@@ -104,10 +105,13 @@
 		function bindValue($targets, name, value) {
 			var attr = callIfFunction(setting.attr[name], $elements);
 			var prop = callIfFunction(setting.prop[name], $elements);
+			var bind = setting.bind[name];
 			if (attr) {
 				$targets.attr(attr, value);
 			} else if (prop) {
 				$targets.prop(prop, value);
+			} else if (bind) {
+				bind($targets, value);
 			} else {
 				setValue($targets, value);
 			}
@@ -138,10 +142,20 @@
 		var $elements = this;
 		var defaults = {
 			find: {},
+			unbind: {},
 			error: false // if element not exists then throw error.
 		};
 		var setting = $.extend(defaults, options);
 		var ret = {};
+
+		function unbindValue($target, name, value) {
+			var unbind = setting.unbind[name];
+			if (unbind) {
+				return unbind($target, value);
+			} else {
+				return getValue($target, value);
+			}
+		}
 
 		$.each(template, function (name, value) {
 			var $target = find$ByName($elements, name, setting.find[name]);
@@ -152,7 +166,7 @@
 			if ($.isPlainObject(value)) {
 				ret[name] = $target.tmplUnbind(value);
 			} else {
-				ret[name] = getValue($target, value);
+				ret[name] = unbindValue($target, name, value);
 			}
 		});
 		return ret;
