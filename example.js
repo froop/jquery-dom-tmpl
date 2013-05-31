@@ -1,4 +1,7 @@
+/*global jQuery */
 (function ($) {
+	"use strict";
+
 	$("select[name=select1]").tmplSelectOpts([
 		{value: "s1", text: "select11"},
 		{value: "s2", text: "select12"}
@@ -81,11 +84,11 @@
 		},
 		convertCallbacks: {
 			input2: function (value) {
-				return parseInt(value);
+				return parseInt(value, 10);
 			}
 		},
 		error: true
-	})
+	});
 	$("#unbind").text(JSON.stringify(unbindData));
 
 	/*
@@ -108,7 +111,7 @@
 			return $element.val().replace(name + ":", "");
 		},
 		error: true
-	})
+	});
 	$("#unbind-all").text(JSON.stringify(unbindData2));
 
 	/*
