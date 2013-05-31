@@ -51,7 +51,7 @@
 		error: true
 	});
 
-	console.log($("#direct-bind").tmplUnbind({
+	$("#unbind").text(JSON.stringify($("#direct-bind").tmplUnbind({
 		text1: null,
 		input1: null,
 //TODO
@@ -65,7 +65,7 @@
 		}
 	}, {
 		error: true
-	}));
+	})));
 
 	$("#clone-list").tmplAppend({clone1: "clone11"}).css({color: "red"});
 	$("#clone-list").tmplAppend({clone1: "clone12"}).css({color: "blue"});
