@@ -52,16 +52,18 @@
 	});
 
 	$("#unbind").text(JSON.stringify($("#direct-bind").tmplUnbind({
-		text1: null,
-		input1: null,
-//TODO
-//		radio1: null,
-//		checkbox2: null,
-		textarea1: null,
-		select1: null,
-		alternate1: null,
+		text1: "",
+		input1: "",
+		input2: 0, //TODO
+		radio1: "",
+		//TODO
+//		checkbox1: false,
+//		checkbox2: [],
+		textarea1: "",
+		select1: "",
+		alternate1: "",
 		nest1: {
-			nest11: null
+			nest11: ""
 		}
 	}, {
 		find: {
