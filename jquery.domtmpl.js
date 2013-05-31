@@ -10,7 +10,8 @@
 (function ($) {
 	"use strict";
 
-	function setValue($fields, value) {
+	$.fn.tmplBindValue = function (value) {
+		var $fields = this;
 		$fields.filter("input,select,textarea").not(":checkbox,:radio").val(value);
 		if (typeof value === "boolean") {
 			$fields.filter(":checkbox,:radio").prop("checked", value);
@@ -21,7 +22,8 @@
 		$fields.not("input,select,textarea").text(value);
 	}
 
-	function getValue($field, template) {
+	$.fn.tmplUnbindValue = function (template) {
+		var $field = this;
 		if ($field.length > 1 && !$field.is(":checkbox,:radio")) {
 			throw new Error("$target.length=" + $target.length);
 		}
@@ -117,7 +119,7 @@
 			} else if (bindAll) {
 				bindAll($targets, value, name);
 			} else {
-				setValue($targets, value);
+				$targets.tmplBindValue(value);
 			}
 		}
 
@@ -161,7 +163,7 @@
 			} else if (unbindAll) {
 				return unbindAll($target, value, name);
 			} else {
-				return getValue($target, value);
+				return $target.tmplUnbindValue(value);
 			}
 		}
 
