@@ -89,13 +89,13 @@
 	$("#unbind").text(JSON.stringify(unbindData));
 
 	/*
-	 * option bindAll, unbindAll
+	 * option bindValue, unbindValue
 	 */
 	$("#bind-all").tmplBind({
 		input1: "text1",
 		input2: "text2",
 	}, {
-		bindAll: function ($elements, value, name) {
+		bindValue: function ($elements, value, name) {
 			$elements.val(name + ":" + value);
 		},
 		error: true
@@ -104,7 +104,7 @@
 		input1: "",
 		input2: ""
 	}, {
-		unbindAll: function ($element, template, name) {
+		unbindValue: function ($element, template, name) {
 			return $element.val().replace(name + ":", "");
 		},
 		error: true

@@ -100,7 +100,7 @@
 			convert: {},
 			attr: {},
 			prop: {},
-			bindAll: function ($targets, value, name) {
+			bindValue: function ($targets, value, name) {
 				$targets.tmplBindValue(value);
 			},
 			error: false // if element not exists then throw error.
@@ -119,7 +119,7 @@
 			} else if (prop) {
 				$targets.prop(prop, value);
 			} else {
-				setting.bindAll($targets, value, name);
+				setting.bindValue($targets, value, name);
 			}
 		}
 
@@ -149,7 +149,7 @@
 		var defaults = {
 			find: {},
 			convert: {},
-			unbindAll: function ($target, template, name) {
+			unbindValue: function ($target, template, name) {
 				return $target.tmplUnbindValue(template);
 			},
 			error: false // if element not exists then throw error.
@@ -159,7 +159,7 @@
 
 		function unbindValue($target, name, template) {
 			var convert = setting.convert[name];
-			var value = setting.unbindAll($target, template, name);
+			var value = setting.unbindValue($target, template, name);
 			if (convert) {
 				value = convert($target.val());
 			}
