@@ -14,7 +14,6 @@ DOM 上のテンプレートに値を設定する。
 属性 id, class, name のいずれかが合致する要素が対象。オプション find で変更可能。
 
 ### 値の設定方法
-下記はデフォルトの場合。attr/prop オプションで変更可能。
 
 * checkbox, radio: `jQuery#prop("checked")`
 * 上記以外の input, select タグ: `jQuery#val()`
@@ -29,17 +28,8 @@ DOM 要素の選択方法を変更する。`jQuery#find()` に使われるセレ
 #### convertCallbacks
 値をそのままではなく変換してから適用する場合に関数を指定する。
 
-#### attr
-値の設定先の属性を変更する。`jQuery#attr()` に使われる属性名を指定する。
-prop, bindCallback オプションと一緒には使用できない。
-
-#### prop
-値の設定先のプロパティーを変更する。`jQuery#prop()` に使われるプロパティー名を指定する。
-attr, bindCallback オプションと一緒には使用できない。
-
 #### bindCallback
-DOM 要素へ設定する関数を任意のものに変更する。
-attr, prop オプションと一緒には使用できない。
+DOM 要素へ値を設定する関数を任意のものに変更する。
 
 ### sample
 詳細な例は example.html を参照。
@@ -78,11 +68,14 @@ attr, prop オプションと一緒には使用できない。
 		find: {
 			alias1: "#find1 > input"
 		},
-		attr: {
-			attr1: "href"
-		},
-		prop: {
-			prop1: "disabled"
+		bindCallback: function ($elements, value, name) {
+			if (name === "attr1") {
+				$elements.attr("href", value);
+			} else if (name === "prop1") {
+				$elements.prop("disabled", value);
+			} else {
+				$elements.tmplBindValue(value);
+			}
 		}
 	});
 

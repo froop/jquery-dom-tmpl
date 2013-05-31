@@ -100,8 +100,6 @@
 		var defaults = {
 			find: {},
 			convertCallbacks: {},
-			attr: {},
-			prop: {},
 			bindCallback: function ($targets, value, name) {
 				$targets.tmplBindValue(value);
 			},
@@ -111,18 +109,10 @@
 
 		function bindValue($targets, name, value) {
 			var convertCallbacks = setting.convertCallbacks[name];
-			var attr = callIfFunction(setting.attr[name], $elements);
-			var prop = callIfFunction(setting.prop[name], $elements);
 			if (convertCallbacks) {
 				value = convertCallbacks(value);
 			}
-			if (attr) {
-				$targets.attr(attr, value);
-			} else if (prop) {
-				$targets.prop(prop, value);
-			} else {
-				setting.bindCallback($targets, value, name);
-			}
+			setting.bindCallback($targets, value, name);
 		}
 
 		$.each(data, function (name, value) {

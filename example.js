@@ -48,15 +48,18 @@
 			alternate21: "#custom21",
 			alternate22: "#custom2 > input"
 		},
-		attr: {
-			custom21: "href"
-		},
-		prop: {
-			custom22: "disabled"
-		},
 		convertCallbacks: {
 			input2: function (value) {
 				return value + ".0";
+			}
+		},
+		bindCallback: function ($elements, value, name) {
+			if (name === "custom21") {
+				$elements.attr("href", value);
+			} else if (name === "custom22") {
+				$elements.prop("disabled", value);
+			} else {
+				$elements.tmplBindValue(value);
 			}
 		},
 		error: true
