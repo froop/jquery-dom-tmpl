@@ -100,7 +100,9 @@
 			attr: {},
 			prop: {},
 			bind: {},
-			bindAll: undefined,
+			bindAll: function ($targets, value, name) {
+				$targets.tmplBindValue(value);
+			},
 			error: false // if element not exists then throw error.
 		};
 		var setting = $.extend(defaults, options);
@@ -116,10 +118,8 @@
 				$targets.prop(prop, value);
 			} else if (bind) {
 				bind($targets, value);
-			} else if (bindAll) {
-				bindAll($targets, value, name);
 			} else {
-				$targets.tmplBindValue(value);
+				bindAll($targets, value, name);
 			}
 		}
 
@@ -149,7 +149,9 @@
 		var defaults = {
 			find: {},
 			unbind: {},
-			unbindAll: undefined,
+			unbindAll: function ($target, template, name) {
+				return $target.tmplUnbindValue(template);
+			},
 			error: false // if element not exists then throw error.
 		};
 		var setting = $.extend(defaults, options);
@@ -160,10 +162,8 @@
 			var unbindAll = setting.unbindAll;
 			if (unbind) {
 				return unbind($target, value);
-			} else if (unbindAll) {
-				return unbindAll($target, value, name);
 			} else {
-				return $target.tmplUnbindValue(value);
+				return unbindAll($target, value, name);
 			}
 		}
 
