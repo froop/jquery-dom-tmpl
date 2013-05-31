@@ -31,13 +31,13 @@ DOM 要素の選択方法を変更する。`jQuery#find()` に使われるセレ
 
 #### attr
 値の設定先の属性を変更する。`jQuery#attr()` に使われる属性名を指定する。
-prop, bindValue オプションと一緒には使用できない。
+prop, bindCallback オプションと一緒には使用できない。
 
 #### prop
 値の設定先のプロパティーを変更する。`jQuery#prop()` に使われるプロパティー名を指定する。
-attr, bindValue オプションと一緒には使用できない。
+attr, bindCallback オプションと一緒には使用できない。
 
-#### bindValue
+#### bindCallback
 DOM 要素へ設定する関数を任意のものに変更する。
 attr, prop オプションと一緒には使用できない。
 

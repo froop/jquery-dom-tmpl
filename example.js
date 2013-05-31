@@ -89,13 +89,13 @@
 	$("#unbind").text(JSON.stringify(unbindData));
 
 	/*
-	 * option bindValue, unbindValue
+	 * option bindCallback, unbindCallback
 	 */
 	$("#bind-all").tmplBind({
 		input1: "text1",
 		input2: "text2",
 	}, {
-		bindValue: function ($elements, value, name) {
+		bindCallback: function ($elements, value, name) {
 			$elements.val(name + ":" + value);
 		},
 		error: true
@@ -104,7 +104,7 @@
 		input1: "",
 		input2: ""
 	}, {
-		unbindValue: function ($element, template, name) {
+		unbindCallback: function ($element, template, name) {
 			return $element.val().replace(name + ":", "");
 		},
 		error: true
