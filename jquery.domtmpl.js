@@ -97,7 +97,7 @@
 		var $elements = this;
 		var defaults = {
 			find: {},
-			convert: {},
+			convertCallbacks: {},
 			attr: {},
 			prop: {},
 			bindCallback: function ($targets, value, name) {
@@ -108,11 +108,11 @@
 		var setting = $.extend(defaults, options);
 
 		function bindValue($targets, name, value) {
-			var convert = setting.convert[name];
+			var convertCallbacks = setting.convertCallbacks[name];
 			var attr = callIfFunction(setting.attr[name], $elements);
 			var prop = callIfFunction(setting.prop[name], $elements);
-			if (convert) {
-				value = convert(value);
+			if (convertCallbacks) {
+				value = convertCallbacks(value);
 			}
 			if (attr) {
 				$targets.attr(attr, value);
@@ -148,7 +148,7 @@
 		var $elements = this;
 		var defaults = {
 			find: {},
-			convert: {},
+			convertCallbacks: {},
 			unbindCallback: function ($target, template, name) {
 				return $target.tmplUnbindValue(template);
 			},
@@ -158,10 +158,10 @@
 		var ret = {};
 
 		function unbindValue($target, name, template) {
-			var convert = setting.convert[name];
+			var convertCallbacks = setting.convertCallbacks[name];
 			var value = setting.unbindCallback($target, template, name);
-			if (convert) {
-				value = convert($target.val());
+			if (convertCallbacks) {
+				value = convertCallbacks($target.val());
 			}
 			return value;
 		}

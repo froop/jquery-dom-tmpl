@@ -51,7 +51,7 @@
 		prop: {
 			custom22: "disabled"
 		},
-		convert: {
+		convertCallbacks: {
 			input2: function (value) {
 				return value + ".0";
 			}
@@ -79,7 +79,7 @@
 		find: {
 			alternate1: "[name=custom12]",
 		},
-		convert: {
+		convertCallbacks: {
 			input2: function (value) {
 				return parseInt(value);
 			}
