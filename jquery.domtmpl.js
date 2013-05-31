@@ -20,12 +20,13 @@
 			$fields.filter(":radio").val([value]);
 		}
 		$fields.not("input,select,textarea").text(value);
-	}
+	};
 
 	$.fn.tmplUnbindValue = function (template) {
 		var $field = this;
 		if ($field.length > 1 && !$field.is(":checkbox,:radio")) {
-			throw new Error("$target.length=" + $field.length);
+			throw new Error("[" + ($field.attr("name") || $field.attr("id") || $field.attr("class")) +
+					"] is length=" + $field.length);
 		}
 
 		if ($field.is(":checkbox,:radio")) {
@@ -43,7 +44,7 @@
 		} else {
 			return $field.text();
 		}
-	}
+	};
 
 	function setupListTmpl($elem) {
 		var $tmpl = $elem.data("domtmpl");
