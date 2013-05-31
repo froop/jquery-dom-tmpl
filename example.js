@@ -18,6 +18,9 @@
 		{value: "c3", text: "check22"}
 	]);
 
+	/*
+	 * tmplBind
+	 */
 	$("#direct-bind").tmplBind({
 		text1: "root text",
 		text2: "nested text",
@@ -48,14 +51,17 @@
 		prop: {
 			custom22: "disabled"
 		},
-		bind: {
-			input2: function ($elements, value) {
-				$elements.val(value + ".0");
+		convert: {
+			input2: function (value) {
+				return value + ".0";
 			}
 		},
 		error: true
 	});
 
+	/*
+	 * tmplUnbind
+	 */
 	var unbindData = $("#direct-bind").tmplUnbind({
 		text1: "",
 		input1: "",
@@ -73,15 +79,18 @@
 		find: {
 			alternate1: "[name=custom12]",
 		},
-		unbind: {
-			input2: function ($element, template) {
-				return parseInt($element.val());
+		convert: {
+			input2: function (value) {
+				return parseInt(value);
 			}
 		},
 		error: true
 	})
 	$("#unbind").text(JSON.stringify(unbindData));
 
+	/*
+	 * option bindAll, unbindAll
+	 */
 	$("#bind-all").tmplBind({
 		input1: "text1",
 		input2: "text2",
@@ -102,9 +111,15 @@
 	})
 	$("#unbind-all").text(JSON.stringify(unbindData2));
 
+	/*
+	 * tmplAppend
+	 */
 	$("#clone-list").tmplAppend({clone1: "clone11"}).css({color: "red"});
 	$("#clone-list").tmplAppend({clone1: "clone12"}).css({color: "blue"});
 
+	/*
+	 * tmplList
+	 */
 	$("#direct-list").tmplList([
 		{list1: "list11"},
 		{list1: "list12"}

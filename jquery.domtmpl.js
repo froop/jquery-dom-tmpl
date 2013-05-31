@@ -97,9 +97,9 @@
 		var $elements = this;
 		var defaults = {
 			find: {},
+			convert: {},
 			attr: {},
 			prop: {},
-			bind: {},
 			bindAll: function ($targets, value, name) {
 				$targets.tmplBindValue(value);
 			},
@@ -108,18 +108,18 @@
 		var setting = $.extend(defaults, options);
 
 		function bindValue($targets, name, value) {
+			var convert = setting.convert[name];
 			var attr = callIfFunction(setting.attr[name], $elements);
 			var prop = callIfFunction(setting.prop[name], $elements);
-			var bind = setting.bind[name];
-			var bindAll = setting.bindAll;
+			if (convert) {
+				value = convert(value);
+			}
 			if (attr) {
 				$targets.attr(attr, value);
 			} else if (prop) {
 				$targets.prop(prop, value);
-			} else if (bind) {
-				bind($targets, value);
 			} else {
-				bindAll($targets, value, name);
+				setting.bindAll($targets, value, name);
 			}
 		}
 
@@ -148,7 +148,7 @@
 		var $elements = this;
 		var defaults = {
 			find: {},
-			unbind: {},
+			convert: {},
 			unbindAll: function ($target, template, name) {
 				return $target.tmplUnbindValue(template);
 			},
@@ -157,14 +157,13 @@
 		var setting = $.extend(defaults, options);
 		var ret = {};
 
-		function unbindValue($target, name, value) {
-			var unbind = setting.unbind[name];
-			var unbindAll = setting.unbindAll;
-			if (unbind) {
-				return unbind($target, value);
-			} else {
-				return unbindAll($target, value, name);
+		function unbindValue($target, name, template) {
+			var convert = setting.convert[name];
+			var value = setting.unbindAll($target, template, name);
+			if (convert) {
+				value = convert($target.val());
 			}
+			return value;
 		}
 
 		$.each(template, function (name, value) {

@@ -26,17 +26,23 @@ DOM 上のテンプレートに値を設定する。
 #### find
 DOM 要素の選択方法を変更する。`jQuery#find()` に使われるセレクターを指定する。
 
+#### convert
+値の変換に適用する関数を指定する。
+
 #### attr
 値の設定先の属性を変更する。`jQuery#attr()` に使われる属性名を指定する。
-prop オプションと一緒には使用できない。
+prop, bindAll オプションと一緒には使用できない。
 
 #### prop
 値の設定先のプロパティーを変更する。`jQuery#prop()` に使われるプロパティー名を指定する。
-attr オプションと一緒には使用できない。
+attr, bindAll オプションと一緒には使用できない。
 
+#### bindAll
+bind の全体一括版。第三引数の name により振り分ける。
+attr, prop オプションと一緒には使用できない。
 
 ### sample
-他の例は example.html を参照。
+詳細な例は example.html を参照。
 
 #### HTML
 
