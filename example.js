@@ -59,11 +59,14 @@
 //		checkbox2: null,
 		textarea1: null,
 		select1: null,
-		alternate1: "#custom11",
+		alternate1: null,
 		nest1: {
 			nest11: null
 		}
 	}, {
+		find: {
+			alternate1: "[name=custom12]",
+		},
 		error: true
 	})));
 

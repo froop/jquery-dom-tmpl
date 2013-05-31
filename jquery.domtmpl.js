@@ -127,13 +127,14 @@
 	$.fn.tmplUnbind = function (template, options) {
 		var $elements = this;
 		var defaults = {
+			find: {},
 			error: false // if element not exists then throw error.
 		};
 		var setting = $.extend(defaults, options);
 		var ret = {};
 
 		$.each(template, function (name, value) {
-			var $target = find$ByName($elements, name, template[name]);
+			var $target = find$ByName($elements, name, setting.find[name]);
 			if (setting.error && $target.length === 0) {
 				throw new Error("tmplUnbind: not exists element [" + name + "]");
 			}
