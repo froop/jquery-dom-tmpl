@@ -25,7 +25,7 @@
 	$.fn.tmplUnbindValue = function (template) {
 		var $field = this;
 		if ($field.length > 1 && !$field.is(":checkbox,:radio")) {
-			throw new Error("$target.length=" + $target.length);
+			throw new Error("$target.length=" + $field.length);
 		}
 
 		if ($field.is(":checkbox,:radio")) {
