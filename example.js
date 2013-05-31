@@ -82,6 +82,26 @@
 	})
 	$("#unbind").text(JSON.stringify(unbindData));
 
+	$("#bind-all").tmplBind({
+		input1: "text1",
+		input2: "text2",
+	}, {
+		bindAll: function ($elements, value, name) {
+			$elements.val(name + ":" + value);
+		},
+		error: true
+	});
+	var unbindData2 = $("#bind-all").tmplUnbind({
+		input1: "",
+		input2: ""
+	}, {
+		unbindAll: function ($element, template, name) {
+			return $element.val().replace(name + ":", "");
+		},
+		error: true
+	})
+	$("#unbind-all").text(JSON.stringify(unbindData2));
+
 	$("#clone-list").tmplAppend({clone1: "clone11"}).css({color: "red"});
 	$("#clone-list").tmplAppend({clone1: "clone12"}).css({color: "blue"});
 
