@@ -25,15 +25,14 @@
 		if ($field.length > 1 && !$field.is(":checkbox,:radio")) {
 			throw new Error("$target.length=" + $target.length);
 		}
-		if ($field.is("input,select,textarea")) {
-			if ($field.is(":radio")) {
-				return $field.filter(":checked").val();
-			} else if ($field.is(":checkbox")) {
-				//TODO
-				return $field.prop("checked");
-			} else {
-				return $field.val();
-			}
+
+		if ($field.is(":radio")) {
+			return $field.filter(":checked").val();
+		} else if ($field.is(":checkbox")) {
+			//TODO
+			return $field.prop("checked");
+		} else if ($field.is("input,select,textarea")) {
+			return $field.val();
 		} else {
 			return $field.text();
 		}
