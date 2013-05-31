@@ -51,7 +51,7 @@
 		error: true
 	});
 
-	$("#unbind").text(JSON.stringify($("#direct-bind").tmplUnbind({
+	var unbindData = $("#direct-bind").tmplUnbind({
 		text1: "",
 		input1: "",
 		input2: 0, //TODO
@@ -69,7 +69,8 @@
 			alternate1: "[name=custom12]",
 		},
 		error: true
-	})));
+	})
+	$("#unbind").text(JSON.stringify(unbindData));
 
 	$("#clone-list").tmplAppend({clone1: "clone11"}).css({color: "red"});
 	$("#clone-list").tmplAppend({clone1: "clone12"}).css({color: "blue"});
