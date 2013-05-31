@@ -21,16 +21,21 @@
 		$fields.not("input,select,textarea").text(value);
 	}
 
-	function getValue($field) {
+	function getValue($field, template) {
 		if ($field.length > 1 && !$field.is(":checkbox,:radio")) {
 			throw new Error("$target.length=" + $target.length);
 		}
 
-		if ($field.is(":radio")) {
-			return $field.filter(":checked").val();
-		} else if ($field.is(":checkbox")) {
-			//TODO
-			return $field.prop("checked");
+		if ($field.is(":checkbox,:radio")) {
+			if (typeof template === "boolean") {
+				return $field.prop("checked");
+			} else if ($.isArray(template)) {
+				return $field.filter(":checked").map(function () {
+					return $(this).val();
+				}).get();
+			} else {
+				return $field.filter(":checked").val();
+			}
 		} else if ($field.is("input,select,textarea")) {
 			return $field.val();
 		} else {
@@ -147,7 +152,7 @@
 			if ($.isPlainObject(value)) {
 				ret[name] = $target.tmplUnbind(value);
 			} else {
-				ret[name] = getValue($target);
+				ret[name] = getValue($target, value);
 			}
 		});
 		return ret;

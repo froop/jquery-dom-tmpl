@@ -57,7 +57,7 @@
 		input2: 0, //TODO
 		radio1: "",
 		checkbox1: false,
-//		checkbox2: [],
+		checkbox2: [],
 		textarea1: "",
 		select1: "",
 		alternate1: "",
