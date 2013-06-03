@@ -80,7 +80,7 @@
 	var unbindData = $("#direct-bind").tmplUnbind({
 		text1: "",
 		input1: "",
-		input2: 0, //TODO
+		input2: 0,
 		radio1: "",
 		checkbox1: false,
 		checkbox2: [],

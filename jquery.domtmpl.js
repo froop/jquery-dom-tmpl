@@ -155,6 +155,9 @@
 			if (convertCallbacks) {
 				value = convertCallbacks($target.val());
 			}
+			if (typeof template === "number" && $.isNumeric(value)) {
+				value = Number(value);
+			}
 			return value;
 		}
 
