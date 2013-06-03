@@ -104,7 +104,9 @@
 		});
 		return JSON.stringify(unbindData);
 	}
-	$("#unbind").text(unbind());
+	$("#unbind-button").on("click", function () {
+		$("#unbind-text").text(unbind());
+	}).click();
 
 	/*
 	 * option bindCallback, unbindCallback
