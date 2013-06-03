@@ -19,17 +19,19 @@ DOM 上のテンプレートに値を設定する。
 * 上記以外の input, select タグ: `jQuery#val()`
 * 上記以外のタグ: `jQuery#text()`
 
+設定方法は、オプション bindCallback で変更可能。  
+設定値は、オプション convertCallbacks で変更可能。  
 
 ### options
 
 #### find
 DOM 要素の選択方法を変更する。`jQuery#find()` に使われるセレクターを指定する。
 
-#### convertCallbacks
-値をそのままではなく変換してから適用する場合に関数を指定する。
-
 #### bindCallback
 DOM 要素へ値を設定する関数を任意のものに変更する。
+
+#### convertCallbacks
+値をそのままではなく変換してから適用する場合に関数を指定する。
 
 ### sample
 詳細な例は example.html を参照。
