@@ -134,6 +134,33 @@ tmplAppend
 	</ol>
 
 
+tmplList
+--------------------
+可変要素に値を一括設定。内部で `tmplAppend()` を使用するのでそちらを参照。
+
+### sample
+
+#### HTML
+
+	<ol id="direct-list">
+		<li class="list1"></li>
+	</ol>
+
+#### JavaScript
+
+	$("#direct-list").tmplList([
+		{list1: "list11"},
+		{list1: "list12"}
+	]);
+
+#### result
+
+	<ol id="direct-list">
+		<li class="list1">list11</li>
+		<li class="list1">list12</li>
+	</ol>
+
+
 tmplSelectOpts
 --------------------
 内部コード値と表示文字列を組み合わせた選択肢項目を配列から動的に作成。
@@ -192,30 +219,3 @@ canEmpty プロパティが `true` の場合の表示文字列。デフォルト
 		<span><input name="radio1" type="radio" value="r1"><label>radio1</label></span>
 		<span><input name="radio1" type="radio" value="r2"><label>radio2</label></span>
 	</span>
-
-
-tmplList
---------------------
-可変要素に値を一括設定。内部で `tmplAppend()` を使用するのでそちらを参照。
-
-### sample
-
-#### HTML
-
-	<ol id="direct-list">
-		<li class="list1"></li>
-	</ol>
-
-#### JavaScript
-
-	$("#direct-list").tmplList([
-		{list1: "list11"},
-		{list1: "list12"}
-	]);
-
-#### result
-
-	<ol id="direct-list">
-		<li class="list1">list11</li>
-		<li class="list1">list12</li>
-	</ol>
