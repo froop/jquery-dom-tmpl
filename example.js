@@ -77,31 +77,34 @@
 	/*
 	 * tmplUnbind
 	 */
-	var unbindData = $("#direct-bind").tmplUnbind({
-		text1: "",
-		input1: "",
-		input2: 0,
-		radio1: "",
-		checkbox1: false,
-		checkbox2: [],
-		textarea1: "",
-		select1: "",
-		alternate1: "",
-		nest1: {
-			nest11: ""
-		}
-	}, {
-		find: {
-			alternate1: "[name=custom12]",
-		},
-		convertCallbacks: {
-			input2: function (value) {
-				return deleteComma(value);
+	function unbind() {
+		var unbindData = $("#direct-bind").tmplUnbind({
+			text1: "",
+			input1: "",
+			input2: 0,
+			radio1: "",
+			checkbox1: false,
+			checkbox2: [],
+			textarea1: "",
+			select1: "",
+			alternate1: "",
+			nest1: {
+				nest11: ""
 			}
-		},
-		error: true
-	});
-	$("#unbind").text(JSON.stringify(unbindData));
+		}, {
+			find: {
+				alternate1: "[name=custom12]",
+			},
+			convertCallbacks: {
+				input2: function (value) {
+					return deleteComma(value);
+				}
+			},
+			error: true
+		});
+		return JSON.stringify(unbindData);
+	}
+	$("#unbind").text(unbind());
 
 	/*
 	 * option bindCallback, unbindCallback
