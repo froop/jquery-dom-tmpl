@@ -2,6 +2,15 @@
 (function ($) {
 	"use strict";
 
+	function deleteComma(str) {
+		return new String(str).replace(/,/g, "");
+	}
+	function insertComma(str) {
+		var res = deleteComma(str);
+		while (res != (res = res.replace(/^(-?\d+)(\d{3})/, "$1,$2")));
+		return res;
+	}
+
 	$("select[name=select1]").tmplSelectOpts([
 		{value: "s1", text: "select11"},
 		{value: "s2", text: "select12"}
@@ -50,7 +59,7 @@
 		},
 		convertCallbacks: {
 			input2: function (value) {
-				return value + ".0";
+				return insertComma(value);
 			}
 		},
 		bindCallback: function ($elements, value, name) {
@@ -87,7 +96,7 @@
 		},
 		convertCallbacks: {
 			input2: function (value) {
-				return parseInt(value, 10);
+				return deleteComma(value);
 			}
 		},
 		error: true
