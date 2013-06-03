@@ -109,29 +109,6 @@
 	}).click();
 
 	/*
-	 * option bindCallback, unbindCallback
-	 */
-	$("#bind-all").tmplBind({
-		input1: "text1",
-		input2: "text2",
-	}, {
-		bindCallback: function ($elements, value, name) {
-			$elements.val(name + ":" + value);
-		},
-		error: true
-	});
-	var unbindData2 = $("#bind-all").tmplUnbind({
-		input1: "",
-		input2: ""
-	}, {
-		unbindCallback: function ($element, template, name) {
-			return $element.val().replace(name + ":", "");
-		},
-		error: true
-	});
-	$("#unbind-all").text(JSON.stringify(unbindData2));
-
-	/*
 	 * tmplAppend
 	 */
 	$("#clone-list").tmplAppend({clone1: "clone11"}).css({color: "red"});
