@@ -262,11 +262,14 @@
 					return isSelect($elem) ? "option" : "label";
 				}
 			},
-			attr: {
-				value: function () {
-					return "value";
+			bindCallback: function ($elem, value, name) {
+				if (name === "value") {
+					$elem.attr("value", value);
+				} else {
+					$elem.tmplBindValue(value);
 				}
-			}
+			},
+			error: true
 		});
 		return this;
 	};
