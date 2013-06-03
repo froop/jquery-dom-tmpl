@@ -3,12 +3,12 @@ jquery-dom-tmpl
 
 HTML テンプレートを DOM で用意して DOM のまま操作する jQuery プラグイン
 
-存在理由はこんな感じ ->
+存在理由 ->
 [JavaScript テンプレートエンジン vs DOM 直接操作](https://gist.github.com/froop/5492623)
 
 tmplBind
 --------------------
-DOM 上のテンプレートに値を設定する。
+テンプレートに値を設定する。
 
 ### DOM 要素の選択方法
 属性 id, class, name のいずれかが合致する要素が対象。オプション find で変更可能。
@@ -25,7 +25,7 @@ DOM 上のテンプレートに値を設定する。
 ### options
 
 #### find
-DOM 要素の選択方法を変更する。`jQuery#find()` に使われるセレクターを指定する。
+DOM 要素の選択方法を変更する。`jQuery#find()` の引数になるセレクターを指定する。
 
 #### bindCallback
 DOM 要素へ値を設定する関数を任意のものに変更する。
@@ -104,14 +104,14 @@ DOM 要素へ値を設定する関数を任意のものに変更する。
 
 tmplUnbind
 --------------------
-tmplBind の逆。DOM の値を JSON に設定。
+tmplBind の逆。DOM から JSON を生成。
 使用例は example.html を参照。
 
 
 tmplAppend
 --------------------
-指定要素内のテンプレートを `clone()` して子要素を追加する。戻り値として追加した要素を返す。
-値設定は内部で `tmplBind()` を使用するのでそちらを参照。
+子要素を `jQuery#clone()` して新たな子要素として追加し、値を設定する。戻り値として追加した要素を返す。
+値設定については、内部で `tmplBind()` を使用するのでそちらを参照。
 
 ### sample
 
@@ -123,14 +123,14 @@ tmplAppend
 
 #### JavaScript
 
-	$("#clone-list").tmplAppend({clone1: "clone11"}).css({color: "red"});
+	$("#clone-list").tmplAppend({clone1: "clone11"});
 	$("#clone-list").tmplAppend({clone1: "clone12"}).css({color: "blue"});
 
 #### result
 
 	<ol id="clone-list">
 		<li class="clone1">clone11</li>
-		<li class="clone1">clone12</li>
+		<li class="clone1" style="color: blue">clone12</li>
 	</ol>
 
 
@@ -196,7 +196,7 @@ canEmpty プロパティが `true` の場合の表示文字列。デフォルト
 
 tmplList
 --------------------
-一覧を一括設定。値設定は内部で `tmplBind()` を使用するのでそちらを参照。
+可変要素に値を一括設定。内部で `tmplAppend()` を使用するのでそちらを参照。
 
 ### sample
 
