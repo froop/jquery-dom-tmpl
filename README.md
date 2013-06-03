@@ -1,9 +1,8 @@
 jquery-dom-tmpl
 =====================
+DOM ベースの HTML テンプレートエンジン。  jQuery プラグインとして動作する。
 
-HTML テンプレートを DOM で用意して DOM のまま操作する jQuery プラグイン
-
-存在理由 ->
+テンプレートを DOM として用意して DOM のまま (＝テキスト化せずに) 操作する。存在理由 ->
 [JavaScript テンプレートエンジン vs DOM 直接操作](https://gist.github.com/froop/5492623)
 
 tmplBind
@@ -15,9 +14,11 @@ tmplBind
 
 ### 値の設定方法
 
-* checkbox, radio: `jQuery#prop("checked")`
-* 上記以外の input, select タグ: `jQuery#val()`
-* 上記以外のタグ: `jQuery#text()`
+* 値が boolean 型の checkbox, radio: `jQuery#prop("checked", value)`
+* 上記以外の checkbox: `jQuery#val(valueArray)`
+* 上記以外の radio: `jQuery#val([value])`
+* 上記以外の input, select タグ: `jQuery#val(value)`
+* 上記以外のタグ: `jQuery#text(value)`
 
 設定方法は、オプション bindCallback で変更可能。  
 設定値は、オプション convertCallbacks で変更可能。  
@@ -34,7 +35,7 @@ DOM 要素へ値を設定する関数を任意のものに変更する。
 値をそのままではなく変換してから適用する場合に関数を指定する。
 
 ### sample
-詳細な例は example.html を参照。
+簡単な例は以下。詳細な例は example.html を参照。
 
 #### HTML
 
@@ -110,7 +111,7 @@ tmplBind の逆。DOM から JSON を生成。
 
 tmplAppend
 --------------------
-子要素を `jQuery#clone()` して新たな子要素として追加し、値を設定する。戻り値として追加した要素を返す。
+子要素を `jQuery#clone()` して値を設定し、子要素群の末尾に追加する。戻り値として追加した要素を返す。
 値設定については、内部で `tmplBind()` を使用するのでそちらを参照。
 
 ### sample
