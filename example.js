@@ -82,11 +82,11 @@
 			text1: "",
 			input1: "",
 			input2: 0,
-			radio1: "",
 			checkbox1: false,
-			checkbox2: [],
 			textarea1: "",
 			select1: "",
+			radio1: "",
+			checkbox2: [],
 			alternate1: "",
 			nest1: {
 				nest11: ""
