@@ -10,6 +10,11 @@
 (function ($) {
 	"use strict";
 
+	/**
+	 * Bind value to Elements.
+	 * @param {*} value in String or Number or only checkbox can Boolean or Array
+	 * @returns {jQuery} for method chain
+	 */
 	$.fn.tmplBindValue = function (value) {
 		var $fields = this;
 		$fields.filter("input,select,textarea").not(":checkbox,:radio").val(value);
@@ -20,8 +25,16 @@
 			$fields.filter(":radio").val([value]);
 		}
 		$fields.not("input,select,textarea").text(value);
+		return this;
 	};
 
+	/**
+	 * Element to value.
+	 * @param {*} template value type in String (<code>""</code>) or
+	 *                Number (<code>0</code>) or only checkbox can
+	 *                Boolean (<code>false</code>) or Array (<code>[]</code>)
+	 * @returns {Object} value
+	 */
 	$.fn.tmplUnbindValue = function (template) {
 		var $field = this;
 		if ($field.length > 1 && !$field.is(":checkbox,:radio")) {
