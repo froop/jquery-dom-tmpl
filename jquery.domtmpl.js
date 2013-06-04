@@ -12,7 +12,7 @@
 
 	/**
 	 * Bind value to Elements.
-	 * @param {*} value in String or Number or only checkbox can Boolean or Array
+	 * @param {Any} value in String or Number or only checkbox can Boolean or Array
 	 * @returns {jQuery} for method chain
 	 */
 	$.fn.tmplBindValue = function (value) {
@@ -30,7 +30,7 @@
 
 	/**
 	 * Element to value.
-	 * @param {*} template value type in String (<code>""</code>) or
+	 * @param {Any} template value type in String (<code>""</code>) or
 	 *                Number (<code>0</code>) or only checkbox can
 	 *                Boolean (<code>false</code>) or Array (<code>[]</code>)
 	 * @returns {Object} value
