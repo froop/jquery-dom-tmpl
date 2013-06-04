@@ -112,7 +112,9 @@
 		var $elements = this;
 		var defaults = {
 			find: {},
-			convertCallbacks: {},
+			convertCallback: function (value, name) {
+				return value;
+			},
 			bindCallback: function ($targets, value, name) {
 				$targets.tmplBindValue(value);
 			},
@@ -121,11 +123,8 @@
 		var setting = $.extend(defaults, options);
 
 		function bindValue($targets, name, value) {
-			var convertCallbacks = setting.convertCallbacks[name];
-			if (convertCallbacks) {
-				value = convertCallbacks(value);
-			}
-			setting.bindCallback($targets, value, name);
+			setting.bindCallback($targets,
+					setting.convertCallback(value, name), name);
 		}
 
 		$.each(data, function (name, value) {
@@ -153,7 +152,9 @@
 		var $elements = this;
 		var defaults = {
 			find: {},
-			convertCallbacks: {},
+			convertCallback: function (value, name) {
+				return value;
+			},
 			unbindCallback: function ($target, template, name) {
 				return $target.tmplUnbindValue(template);
 			},
@@ -163,11 +164,8 @@
 		var ret = {};
 
 		function unbindValue($target, name, template) {
-			var convertCallbacks = setting.convertCallbacks[name];
 			var value = setting.unbindCallback($target, template, name);
-			if (convertCallbacks) {
-				value = convertCallbacks(value);
-			}
+			value = setting.convertCallback(value, name);
 			if (typeof template === "number" && $.isNumeric(value)) {
 				value = Number(value);
 			}

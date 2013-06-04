@@ -21,7 +21,7 @@ tmplBind
 * 上記以外のタグ: `jQuery#text(value)`
 
 設定方法は、オプション bindCallback で変更可能。  
-設定値は、オプション convertCallbacks で変更可能。  
+設定値は、オプション convertCallback で変更可能。  
 
 ### options
 
@@ -31,7 +31,7 @@ DOM 要素の選択方法を変更する。`jQuery#find()` の引数になるセ
 #### bindCallback
 DOM 要素へ値を設定する関数を任意のものに変更する。
 
-#### convertCallbacks
+#### convertCallback
 値をそのままではなく変換してから適用する場合に関数を指定する。
 
 ### sample

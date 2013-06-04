@@ -57,9 +57,11 @@
 			alternate21: "#custom21",
 			alternate22: "#custom2 > input"
 		},
-		convertCallbacks: {
-			input2: function (value) {
+		convertCallback: function (value, name) {
+			if (name === "input2") {
 				return insertComma(value);
+			} else {
+				return value;
 			}
 		},
 		bindCallback: function ($elements, value, name) {
@@ -95,9 +97,11 @@
 			find: {
 				alternate1: "[name=custom12]",
 			},
-			convertCallbacks: {
-				input2: function (value) {
+			convertCallback: function (value, name) {
+				if (name === "input2") {
 					return deleteComma(value);
+				} else {
+					return value;
 				}
 			},
 			error: true
