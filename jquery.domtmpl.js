@@ -166,7 +166,7 @@
 			var convertCallbacks = setting.convertCallbacks[name];
 			var value = setting.unbindCallback($target, template, name);
 			if (convertCallbacks) {
-				value = convertCallbacks($target.val());
+				value = convertCallbacks(value);
 			}
 			if (typeof template === "number" && $.isNumeric(value)) {
 				value = Number(value);
