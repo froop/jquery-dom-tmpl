@@ -20,7 +20,7 @@
 			dataType : "html",
 			async: false,
 		}).done(function (data) {
-			$("#qunit-fixture").append(
+			$("body").append(
 					$("<div>").html(data).find("#example"));
 		}).fail(function (XMLHttpRequest, textStatus, errorThrown) {
 			alert(textStatus + " :: " + errorThrown);
