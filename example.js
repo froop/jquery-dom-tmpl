@@ -7,7 +7,7 @@
 	}
 	function insertComma(str) {
 		var res = deleteComma(str);
-		while (res != (res = res.replace(/^(-?\d+)(\d{3})/, "$1,$2")));
+		while (res !== (res = res.replace(/^(-?\d+)(\d{3})/, "$1,$2")));
 		return res;
 	}
 
