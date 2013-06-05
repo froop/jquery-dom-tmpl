@@ -27,7 +27,7 @@
 	$("#checks").tmplSelectOpts([
 		{value: "c1", text: "check21"},
 		{value: "c2", text: "check22"},
-		{value: "c3", text: "check22"}
+		{value: "c3", text: "check23"}
 	]);
 
 	/*
