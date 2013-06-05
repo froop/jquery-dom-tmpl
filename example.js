@@ -3,7 +3,7 @@
 	"use strict";
 
 	function deleteComma(str) {
-		return new String(str).replace(/,/g, "");
+		return String(str).replace(/,/g, "");
 	}
 	function insertComma(str) {
 		var res = deleteComma(str);

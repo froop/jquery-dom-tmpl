@@ -29,7 +29,7 @@
 
 	test("tmplUnbind", function () {
 		function deleteComma(str) {
-			return new String(str).replace(/,/g, "");
+			return String(str).replace(/,/g, "");
 		}
 		var res = $("#direct-bind").tmplUnbind({
 			text1: "",
