@@ -18,10 +18,9 @@
 			url : "example.html",
 			type : "GET",
 			dataType : "html",
-			async: false,
+			async: false
 		}).done(function (data) {
-			$("body").append(
-					$("<div>").html(data).find("#example"));
+			$("body").append($("<div>").html(data).find("#example"));
 		}).fail(function (XMLHttpRequest, textStatus, errorThrown) {
 			alert(textStatus + " :: " + errorThrown);
 		});
