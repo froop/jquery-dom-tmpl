@@ -14,7 +14,7 @@ tmplBind
 
 ### 値の設定方法
 
-* 値が boolean 型の checkbox, radio: `jQuery#prop("checked", value)`
+* 値が Boolean 型の checkbox, radio: `jQuery#prop("checked", value)`
 * 上記以外の checkbox: `jQuery#val(valueArray)`
 * 上記以外の radio: `jQuery#val([value])`
 * 上記以外の input, select タグ: `jQuery#val(value)`
@@ -55,6 +55,9 @@ DOM 要素へ値を設定する関数を任意のものに変更する。
 			<a id="attr1">link</a>
 			<input name="prop1">
 		</div>
+		<div id="nest1">
+			<span id="nest11"></span>
+		</div>
 	</div>
 
 #### JavaScript
@@ -66,7 +69,10 @@ DOM 要素へ値を設定する関数を任意のものに変更する。
 		select1: "s1",
 		alias1: "alias find",
 		attr1: "http://example.com/",
-		prop1: true
+		prop1: true,
+		nest1: {
+			nest11: "nested text"
+		}
 	}, {
 		find: {
 			alias1: "#find1 > input"
@@ -99,6 +105,9 @@ DOM 要素へ値を設定する関数を任意のものに変更する。
 		<div>
 			<a id="attr1" href="http://example.com/">link</a>
 			<input name="prop1" disabled>
+		</div>
+		<div id="nest1">
+			<span id="nest11">nested text</span>
 		</div>
 	</div>
 
@@ -137,7 +146,7 @@ tmplAppend
 
 tmplList
 --------------------
-可変要素に値を一括設定。内部で `tmplAppend()` を使用するのでそちらを参照。
+繰り返し要素に値を一括設定。内部で `tmplAppend()` を使用するのでそちらを参照。
 
 ### sample
 
@@ -164,16 +173,14 @@ tmplList
 
 tmplBindClone
 --------------------
-使い方は tmplBind と同じ。動作が違い、毎回空の状態のテンプレートが復元される。
+使い方は tmplBind と同じ。毎回空のテンプレートを復元してから値を設定するのが tmplBind との違い。
 具体的には、元テンプレートを直接に使用するのではなく、退避したものをコピーして使用する。
 
 
 tmplSelectOpts
 --------------------
-内部コード値と表示文字列を組み合わせた選択肢項目を配列から動的に作成。
-引数はプロパティに value, text を持つオブジェクトの配列。
-
-下記のテンプレートに対応する。
+内部コード値と表示文字列の組み合わせである繰り返し要素を配列から動的に作成。
+引数はプロパティに value, text を持つオブジェクトの配列。下記のテンプレートに対応する。
 
 * select タグ内の option タグ
 * input タグ (radio, checkbox を想定) 及び対応する label タグ
