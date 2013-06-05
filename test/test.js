@@ -93,4 +93,28 @@
 		equal($target.find("option:eq(2)").val(), "s2");
 		equal($target.find("option:eq(2)").text(), "select12");
 	});
+
+	test("tmplSelectOpts radio", function () {
+		var $target = $("#radios");
+
+		equal($target.find("span").length, 3);
+		equal($target.find("span:eq(0) input").val(), "");
+		equal($target.find("span:eq(0) label").text(), "none");
+		equal($target.find("span:eq(1) input").val(), "r1");
+		equal($target.find("span:eq(1) label").text(), "radio11");
+		equal($target.find("span:eq(2) input").val(), "r2");
+		equal($target.find("span:eq(2) label").text(), "radio12");
+	});
+
+	test("tmplSelectOpts checkbox", function () {
+		var $target = $("#checks");
+
+		equal($target.find("span").length, 3);
+		equal($target.find("span:eq(0) input").val(), "c1");
+		equal($target.find("span:eq(0) label").text(), "check21");
+		equal($target.find("span:eq(1) input").val(), "c2");
+		equal($target.find("span:eq(1) label").text(), "check22");
+		equal($target.find("span:eq(2) input").val(), "c3");
+		equal($target.find("span:eq(2) label").text(), "check23");
+	});
 })(jQuery);
