@@ -244,6 +244,17 @@
 	};
 
 	/**
+	 * Bind data to cloned template.
+	 * @param {Object} data JSON object
+	 * @param {Object} options
+	 */
+	$.fn.tmplBindClone = function (data, options) {
+		this.tmplList([]);
+		this.tmplAppend(data, options);
+		return this;
+	};
+
+	/**
 	 * Bind array of value-text to select options (or :radio, :checkbox).
 	 * @param {Array} dataList List of JSON object (value, text)
 	 * @param {Object} options

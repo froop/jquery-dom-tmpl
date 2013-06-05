@@ -126,4 +126,17 @@
 		{list1: "list12"}
 	]);
 	$("#direct-list").tmplAppend({list1: "list13"});
+
+	/*
+	 * tmplBindClone
+	 */
+	$("#bind-clone").tmplBindClone({
+		elem1: "elem1 a",
+		elem2: "elem2 a",
+		elem3: "elem3 a"
+	});
+	$("#bind-clone").tmplBindClone({
+		elem1: "elem1 b",
+		elem2: "elem2 b"
+	});
 })(jQuery);
