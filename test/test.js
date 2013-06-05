@@ -16,8 +16,8 @@
 		equal($("[name=select1]").val(), "s1");
 		equal($("[name=radio1]:checked").val(), "r1");
 		equal($("[name=checkbox2]:checked").length, 2);
-		equal($($("[name=checkbox2]:checked").get(0)).val(), "c1");
-		equal($($("[name=checkbox2]:checked").get(1)).val(), "c3");
+		equal($("[name=checkbox2]:checked:eq(0)").val(), "c1");
+		equal($("[name=checkbox2]:checked:eq(1)").val(), "c3");
 		equal($("#custom11").text(), "alt1");
 		equal($("[name=custom12]").val(), "alt1");
 		equal($("#custom21").text(), "alt21");
@@ -84,7 +84,6 @@
 
 	test("tmplSelectOpts select", function () {
 		var $target = $("select[name=select1]");
-
 		equal($target.find("option").length, 3);
 		equal($target.find("option:eq(0)").val(), "");
 		equal($target.find("option:eq(0)").text(), "");
@@ -96,7 +95,6 @@
 
 	test("tmplSelectOpts radio", function () {
 		var $target = $("#radios");
-
 		equal($target.find("span").length, 3);
 		equal($target.find("span:eq(0) input").val(), "");
 		equal($target.find("span:eq(0) label").text(), "none");
@@ -108,7 +106,6 @@
 
 	test("tmplSelectOpts checkbox", function () {
 		var $target = $("#checks");
-
 		equal($target.find("span").length, 3);
 		equal($target.find("span:eq(0) input").val(), "c1");
 		equal($target.find("span:eq(0) label").text(), "check21");
@@ -120,7 +117,6 @@
 
 	test("tmplBindClone", function () {
 		var $target = $("#bind-clone");
-
 		equal($target.find("#elem1").text(), "elem1 b");
 		equal($target.find("#elem2").text(), "elem2 b");
 		equal($target.find("#elem3").text(), "");
