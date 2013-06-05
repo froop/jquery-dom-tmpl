@@ -12,6 +12,22 @@
 	<script src="jquery-1.10.1.min.js"></script>
 	<script src="test/lib/qunit.js"></script>
 	<script src="test/lib/sinon.js"></script>
+
+	<script>
+		$.ajax({
+			url : "example.html",
+			type : "GET",
+			dataType : "html",
+			async: false,
+		}).done(function (data) {
+			$("#qunit-fixture").append(
+					$("<div>").html(data).find("#example"));
+		}).fail(function (XMLHttpRequest, textStatus, errorThrown) {
+			alert(textStatus + " :: " + errorThrown);
+		});
+	</script>
+	<script src="jquery.domtmpl.js"></script>
+	<script src="example.js"></script>
 	<script src="test/test.js"></script>
 </body>
 </html>

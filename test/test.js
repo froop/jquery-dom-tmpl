@@ -3,11 +3,10 @@
 
 	module("domtmpl", {
 		setup: function () {
-			$("#qunit-fixture").load("example.html #example");
 		}
 	});
 
-	test("dummy", function () {
-		ok(true);
+	test("tmplBind", function () {
+		equal("root text", $("#text1").text());
 	});
 })(jQuery);
