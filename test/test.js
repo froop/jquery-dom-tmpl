@@ -117,4 +117,12 @@
 		equal($target.find("span:eq(2) input").val(), "c3");
 		equal($target.find("span:eq(2) label").text(), "check23");
 	});
+
+	test("tmplBindClone", function () {
+		var $target = $("#bind-clone");
+
+		equal($target.find("#elem1").text(), "elem1 b");
+		equal($target.find("#elem2").text(), "elem2 b");
+		equal($target.find("#elem3").text(), "");
+	});
 })(jQuery);
