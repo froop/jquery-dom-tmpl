@@ -34,8 +34,8 @@
 	 * tmplBind
 	 */
 	$("#direct-bind").tmplBind({
-		text1: "root text",
-		text2: "nested text",
+		text1: "root element",
+		text2: "child element",
 		input1: "input text",
 		input2: 1234,
 		checkbox1: true,
