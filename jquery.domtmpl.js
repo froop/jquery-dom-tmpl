@@ -253,8 +253,11 @@
 	 * @param {Object} options
 	 */
 	$.fn.tmplBindClone = function (data, options) {
-		emptyTmpl(this);
-		this.tmplAppend(data, options);
+		this.each(function () {
+			var $elem = $(this);
+			emptyTmpl($elem);
+			$elem.tmplAppend(data, options);
+		});
 		return this;
 	};
 
