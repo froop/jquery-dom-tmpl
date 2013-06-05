@@ -81,4 +81,16 @@
 			}
 		});
 	});
+
+	test("tmplSelectOpts select", function () {
+		var $target = $("select[name=select1]");
+
+		equal($target.find("option").length, 3);
+		equal($target.find("option:eq(0)").val(), "");
+		equal($target.find("option:eq(0)").text(), "");
+		equal($target.find("option:eq(1)").val(), "s1");
+		equal($target.find("option:eq(1)").text(), "select11");
+		equal($target.find("option:eq(2)").val(), "s2");
+		equal($target.find("option:eq(2)").text(), "select12");
+	});
 })(jQuery);
