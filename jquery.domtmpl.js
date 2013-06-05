@@ -70,6 +70,11 @@
 		return $tmpl;
 	}
 
+	function emptyTmpl($elem) {
+		setupListTmpl($elem);
+		$elem.empty();
+	}
+
 	function bindItem($elements, data, options) {
 		function wrap$() {
 			return $elements
@@ -234,8 +239,7 @@
 		dataList = dataList || [];
 		this.each(function () {
 			var $elem = $(this);
-			setupListTmpl($elem);
-			$elem.empty();
+			emptyTmpl($elem);
 			$.each(dataList, function () {
 				$elem.tmplAppend(this, options);
 			});
@@ -249,7 +253,7 @@
 	 * @param {Object} options
 	 */
 	$.fn.tmplBindClone = function (data, options) {
-		this.tmplList([]);
+		emptyTmpl(this);
 		this.tmplAppend(data, options);
 		return this;
 	};
