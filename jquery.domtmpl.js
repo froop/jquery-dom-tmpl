@@ -216,7 +216,7 @@
 	 * Clone list item and bind data.
 	 * @param {Object} data JSON object
 	 * @param {Object} options
-	 * @returns {jQuery} appended item
+	 * @returns {jQuery} cloned element
 	 */
 	$.fn.tmplItem = function (data, options) {
 		var $list = this;
@@ -239,7 +239,7 @@
 
 	/**
 	 * Bind array of data to list items.
-	 * @param {Array} dataList List of JSON object
+	 * @param {Array} dataList List of JSON objects
 	 * @param {Object} options
 	 * @returns {jQuery} for method chain
 	 */
@@ -259,6 +259,7 @@
 	 * Bind data to cloned template.
 	 * @param {Object} data JSON object
 	 * @param {Object} options
+	 * @returns {jQuery} for method chain
 	 */
 	$.fn.tmplBindClone = function (data, options) {
 		this.each(function () {
@@ -270,7 +271,7 @@
 	};
 
 	/**
-	 * Bind array of value-text to select options (or :radio, :checkbox).
+	 * Bind array of value-text to select options (or :radio,:checkbox).
 	 * @param {Array} dataList List of JSON object (value, text)
 	 * @param {Object} options
 	 * @returns {jQuery} for method chain
