@@ -117,6 +117,12 @@ tmplUnbind
 tmplBind の逆。DOM から JSON を生成。
 使用例は example.html を参照。
 
+### options 
+tmplBind にはない独自のオプション。
+
+#### trim
+値の先頭と末尾の空白文字を削除する。空白文字とは半角/全角スペースと改行文字。
+
 
 tmplAppend
 --------------------

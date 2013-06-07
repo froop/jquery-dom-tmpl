@@ -10,6 +10,10 @@
 (function ($) {
 	"use strict";
 
+	function trim(str) {
+		return str.replace(/^[ 　\t\r\n]+|[ 　\t\r\n]+$/g, "");
+	}
+
 	/**
 	 * Bind value to Elements.
 	 * @param {Any} value in String or Number or only checkbox can Boolean or Array
@@ -163,6 +167,7 @@
 			unbindCallback: function ($target, template, name) {
 				return $target.tmplUnbindValue(template);
 			},
+			trim: true,
 			error: false // if element not exists then throw error.
 		};
 		var setting = $.extend(defaults, options);
@@ -170,6 +175,9 @@
 
 		function unbindValue($target, name, template) {
 			var value = setting.unbindCallback($target, template, name);
+			if (setting.trim) {
+				value = trim(value);
+			}
 			value = setting.convertCallback(value, name);
 			if (typeof template === "number" && $.isNumeric(value)) {
 				value = Number(value);
