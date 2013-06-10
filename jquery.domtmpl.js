@@ -8,8 +8,12 @@
 (function ($) {
 	"use strict";
 
-	function trim(str) {
-		return str.replace(/^[ 　\t\r\n]+|[ 　\t\r\n]+$/g, "");
+	function trim(value) {
+		if (typeof value === "string") {
+			return value.replace(/^[ 　\t\r\n]+|[ 　\t\r\n]+$/g, "");
+		} else {
+			return value;
+		}
 	}
 
 	/**
