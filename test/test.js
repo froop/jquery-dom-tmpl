@@ -82,6 +82,20 @@
 		});
 	});
 
+	test("tmplUnbind not number input", function () {
+		var res = $("#direct-bind").tmplUnbind({
+			input1: 0,
+			nullnum1: 0
+		}, {
+			error: true
+		});
+
+		deepEqual(res, {
+			input1: "input text",
+			nullnum1: undefined
+		});
+	});
+
 	test("tmplSelectOpts select", function () {
 		var $target = $("select[name=select1]");
 		equal($target.find("option").length, 3);

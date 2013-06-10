@@ -92,7 +92,8 @@
 			alternate1: "",
 			nest1: {
 				nest11: ""
-			}
+			},
+			nullnum1: 0
 		}, {
 			find: {
 				alternate1: "[name=custom12]",

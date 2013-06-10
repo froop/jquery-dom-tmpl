@@ -181,8 +181,12 @@
 				value = trim(value);
 			}
 			value = setting.convertCallback(value, name);
-			if (typeof template === "number" && $.isNumeric(value)) {
-				value = Number(value);
+			if (typeof template === "number") {
+				if ($.isNumeric(value)) {
+					value = Number(value);
+				} else if (value === "") {
+					value = undefined;
+				}
 			}
 			return value;
 		}
