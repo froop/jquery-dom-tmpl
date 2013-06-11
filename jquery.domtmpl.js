@@ -76,10 +76,18 @@
 		return $tmpl;
 	}
 
-	function emptyTmpl($elem) {
-		setupListTmpl($elem);
-		$elem.empty();
-	}
+	/**
+	 * @param {Object} options
+	 * @returns {jQuery} for method chain
+	 */
+	$.fn.tmplEmpty = function () {
+		this.each(function () {
+			var $elem = $(this);
+			setupListTmpl($elem);
+			$elem.empty();
+		});
+		return this;
+	};
 
 	function bindItem($elements, data, options) {
 		function wrap$() {
@@ -251,9 +259,9 @@
 	 */
 	$.fn.tmplList = function (dataList, options) {
 		dataList = dataList || [];
+		this.tmplEmpty();
 		this.each(function () {
 			var $elem = $(this);
-			emptyTmpl($elem);
 			$.each(dataList, function () {
 				$elem.tmplAppend(this, options);
 			});
@@ -268,10 +276,9 @@
 	 * @returns {jQuery} for method chain
 	 */
 	$.fn.tmplBindClone = function (data, options) {
+		this.tmplEmpty();
 		this.each(function () {
-			var $elem = $(this);
-			emptyTmpl($elem);
-			$elem.tmplAppend(data, options);
+			$(this).tmplAppend(data, options);
 		});
 		return this;
 	};
