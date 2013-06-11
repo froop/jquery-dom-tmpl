@@ -262,16 +262,14 @@
 	};
 
 	/**
-	 * Bind data to cloned template.
-	 * @param {Object} data JSON object
-	 * @param {Object} options
+	 * Initialize template before repeated use.
 	 * @returns {jQuery} for method chain
 	 */
-	$.fn.tmplBindClone = function (data, options) {
+	$.fn.tmplInit = function () {
 		this.each(function () {
 			var $elem = $(this);
 			emptyTmpl($elem);
-			$elem.tmplAppend(data, options);
+			$elem.tmplAppend({});
 		});
 		return this;
 	};

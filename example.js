@@ -129,14 +129,16 @@
 	$("#direct-list").tmplAppend({list1: "list13"});
 
 	/*
-	 * tmplBindClone
+	 * tmplInit
 	 */
-	$("#bind-clone").tmplBindClone({
+	$("#init-bind").tmplInit();
+	$("#init-bind").tmplBind({
 		elem1: "elem1 a",
 		elem2: "elem2 a",
 		elem3: "elem3 a"
 	});
-	$("#bind-clone").tmplBindClone({
+	$("#init-bind").tmplInit();
+	$("#init-bind").tmplBind({
 		elem1: "elem1 b",
 		elem2: "elem2 b"
 	});
