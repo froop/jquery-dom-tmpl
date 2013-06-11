@@ -184,8 +184,8 @@
 			if (typeof template === "number") {
 				if ($.isNumeric(value)) {
 					value = Number(value);
-				} else if (value === "") {
-					value = undefined;
+//				} else if (value === "") {
+//					value = undefined;
 				}
 			}
 			return value;

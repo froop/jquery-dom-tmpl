@@ -92,7 +92,7 @@
 
 		deepEqual(res, {
 			input1: "input text",
-			nullnum1: undefined
+			nullnum1: ""
 		});
 	});
 
