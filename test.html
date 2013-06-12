@@ -7,7 +7,11 @@
 </head>
 <body>
 	<div id="qunit"></div>
-	<div id="qunit-fixture"></div>
+	<div id="qunit-fixture">
+		<div id="xss-text"></div>
+		<input id="xss-input">
+		<input id="xss-radio" type="radio" value="val1" checked>
+	</div>
 
 	<script src="jquery-1.10.1.min.js"></script>
 	<script src="test/lib/qunit.js"></script>

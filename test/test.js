@@ -135,4 +135,15 @@
 		equal($target.find("#elem2").text(), "elem2 b");
 		equal($target.find("#elem3").text(), "");
 	});
+
+	test("tmplBindValue xss", function () {
+		$("#xss-text").tmplBindValue("'\"<br>");
+		$("#xss-input").tmplBindValue("'\"<br>");
+		$("#xss-radio").tmplBindValue("'\"<br>");
+
+		equal($("#xss-text").text(), "'\"<br>");
+		equal($("#xss-input").val(), "'\"<br>");
+		equal($("#xss-radio").val(), "val1");
+		ok($("#xss-radio").prop("checked") === false);
+	});
 })(jQuery);
