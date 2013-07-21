@@ -93,7 +93,8 @@
 			nest1: {
 				nest11: ""
 			},
-			nullnum1: 0
+			nullnum1: 0,
+			zenkaku: 0
 		}, {
 			find: {
 				alternate1: "[name=custom12]",

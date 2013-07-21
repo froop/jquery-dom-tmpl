@@ -96,6 +96,18 @@
 		});
 	});
 
+	test("tmplUnbind zenkaku number", function () {
+		var res = $("#direct-bind").tmplUnbind({
+			zenkaku: 0
+		}, {
+			error: true
+		});
+
+		deepEqual(res, {
+			zenkaku: -123.4,
+		});
+	});
+
 	test("tmplSelectOpts select", function () {
 		var $target = $("select[name=select1]");
 		equal($target.find("option").length, 3);

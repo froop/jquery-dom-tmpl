@@ -180,6 +180,11 @@
 			if (setting.trim) {
 				value = trim(value);
 			}
+			if (typeof template === "number") {
+				value = value.replace(/[０-９－．]/g, function (s) {
+					return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+				});
+			}
 			value = setting.convertCallback(value, name);
 			if (typeof template === "number") {
 				if ($.isNumeric(value)) {
