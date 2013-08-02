@@ -280,6 +280,18 @@
 	};
 
 	/**
+	 * Empty template.
+	 * @returns {jQuery} for method chain
+	 */
+	$.fn.tmplEmpty = function () {
+		this.each(function () {
+			var $elem = $(this);
+			emptyTmpl($elem);
+		});
+		return this;
+	};
+
+	/**
 	 * Bind array of value-text to select options (or :radio,:checkbox).
 	 * @param {Array} dataList List of JSON object (value, text)
 	 * @param {Object} options
